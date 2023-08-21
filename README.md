@@ -12,3 +12,11 @@ Benjamin Liebenberg
 Nicolas
 Christian Steiner
 
+## Feature List 
+1. Genderinklusive Toiletten
+2. Flinta tolerant
+3. Rezension hinterlassen
+4. Koordinaten eintragen und in Google Maps anzeigen über Api
+5. Datenbank speichern
+6. Tags hinzufügen, dass andere Nutzer sich diese toiletten anzeigen lassen können (bsp. Genderinklusive)
+7. Benutzeranmeldung (optional)
