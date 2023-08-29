@@ -9,7 +9,7 @@ Gruppe 3
 Annika Matz
 Tobias Reetz
 Benjamin Liebenberg
-Nicolas
+Nicolas Hermosillo Orendain
 Christian Steiner
 
 ## Feature List 
