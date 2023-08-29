@@ -9,9 +9,6 @@
 
     <ItemGroup>
       <Folder Include="src\config\" />
-      <Folder Include="src\database\" />
-      <Folder Include="src\main\" />
-      <Folder Include="src\user\" />
     </ItemGroup>
 
     <ItemGroup>
