@@ -3,6 +3,7 @@ Software Engineering I Project Gruppe 3
 
 ## Links
 > ⚠️https://miro.com/app/board/uXjVMs2tJW8=/
+> :warning: https://docs.google.com/document/d/1H_LafCqCp2rFiuBlNXMhiBloQarLwDEFp-_FiTO_TVY/edit
 
 ## Gruppenmitglieder 
 Gruppe 3
