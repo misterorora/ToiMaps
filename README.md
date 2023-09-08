@@ -2,8 +2,12 @@
 Software Engineering I Project Gruppe 3
 
 ## Links
+# Miro Board
 > ⚠️https://miro.com/app/board/uXjVMs2tJW8=/
-> :warning: https://docs.google.com/document/d/1H_LafCqCp2rFiuBlNXMhiBloQarLwDEFp-_FiTO_TVY/edit
+# Google Docs 
+> :warning: https://docs.google.com/document/d/1eg3hogkkGZV-JtfodByjMpwMvCaZ37b09bKO6svxzj0/edit
+# Google Sheets
+> ⚠️ https://docs.google.com/spreadsheets/d/1nX4dd-fSC3SstYsG8qtLopWuyFXwp0Cx7PcrGC-fSUo/edit#gid=0
 
 ## Gruppenmitglieder 
 Gruppe 3
