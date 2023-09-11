@@ -20,15 +20,45 @@
 
     const map = L.map('map')
         .setView([52.520008, 	13.404954], 12)
-        .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+        .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v12'));
 
 
-    var marker1 = L.marker([52.520008, 13.404954])
-        .setPopup()
-        .addTo(map);
+    var marker1 = L.marker([52.520008, 13.404954],  {
+        icon: L.mapbox.marker.icon({
+            'marker-size': 'large',
+            'marker-symbol': 'toilet',
+            'marker-color': '#fa0'
+        })
+    }).addTo(map)
+    
+    var marker2 = L.marker([52.52997858,13.37653758], {
+        icon: L.mapbox.marker.icon({
+            'marker-size':  'large',
+            'marker-symbol':'toilet',
+            'marker-color':'#03fcf8'
+        })
+    })
+        .addTo(map)
+
+    L.marker([52.5086491,13.5267001], {
+        icon: L.mapbox.marker.icon({
+            'marker-size':  'large',
+            'marker-symbol':'hot-spring',
+            'marker-color':'#8c241c'
+        })
+    })
+        .addTo(map)
 
 
-
+    map.on('mousemove', (e) => {
+        document.getElementById('info').innerHTML =
+// `e.point` is the x, y coordinates of the `mousemove` event
+// relative to the top-left corner of the map.
+            JSON.stringify(e.point) +
+            '<br />' +
+            // `e.lngLat` is the longitude, latitude geographical position of the event.
+            JSON.stringify(e.lngLat.wrap());
+    });
     map.scrollWheelZoom.disable();
 </script>
 
