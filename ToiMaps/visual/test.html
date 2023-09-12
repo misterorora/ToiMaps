@@ -8,13 +8,83 @@
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #map { position:absolute; bottom:0; left: 25%; width: 75%; height: 90%;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+        #header {
+            display: flex;
+            align-content: center;
+            position: absolute;
+            justify-content: end;
+            align-items: center;
+            width: 100%;
+            height: 10%;
+            background-color: #adadad;
+        }
+
+        .nav {
+            display: flex;
+            align-content: flex-end;
+            justify-content: flex-end;
+            gap: 50px;
+            margin-top: 8px;
+            margin-right: 5%;
+            list-style-type: none;
+            top: 5%;
+        }
+
+
+        .nav li a {
+            text-decoration: none;
+            font-family: 'Classico', sans-serif;
+            color: mintcream;
+            font-size: 1.8rem;
+        }
+        #under {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        #leftPart {
+            display: block;
+            left: 0px;
+            position: absolute;
+            align-content: center;
+            top: 10%;
+            width: 25%;
+            height: 90%;
+            alignment: left;
+            background-color: aqua;
+        }
+
+
     </style>
 </head>
+
 <body>
 
-<div id='map'></div>
+<div id='canva'>
+    <div id="header">
+        <ul class="nav">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Serices</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </div>
 
+
+    <div id='under'>
+        <div id='leftPart'></div>
+
+        <div id='map'></div>
+
+    </div>
+</div>
 <script>
     L.mapbox.accessToken = 'pk.eyJ1Ijoib3JvcmFzdHVkIiwiYSI6ImNsbWFjYWdudTBhenYzZnB4MWRxOTQyZmgifQ.xGK5egvW3iqFN6F9zNDjFg';
     var map = L.mapbox.map('map')
@@ -25,7 +95,7 @@
     L.marker([37.9, -77], {
         icon: L.mapbox.marker.icon({
             'marker-size': 'large',
-            'marker-symbol': 'bus',
+            'marker-symbol': 'toilet',
             'marker-color': '#fa0'
         })
     }).addTo(map);
