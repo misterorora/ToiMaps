@@ -4,22 +4,18 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03d2ee97-940a-4ef9-aed1-22825e8936d1" name="Changes" comment="backend +">
-      <change afterPath="$PROJECT_DIR$/ToiMap/tpl/font.gohtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/.gitignore" afterDir="false" />
+    <list default="true" id="03d2ee97-940a-4ef9-aed1-22825e8936d1" name="Changes" comment="Front">
+      <change afterPath="$PROJECT_DIR$/ToiMaps/src/databaseHandler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToiMaps/src/handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToiMaps/src/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToiMaps/src/marker.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToiMaps/src/tpl/font.gohtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ToiMaps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ToiMaps.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps.sln" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/ToiMaps.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/databaseHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/databaseHandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/marker.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/marker.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/tpl/font.gohtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/visual/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/visual/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/visual/webmap.html" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/visual/webmap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Toimaps_Struktur.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/Toimaps_Struktur.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unbenanntes Diagramm.drawio.png" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/Unbenanntes Diagramm.drawio.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMaps/src/config/config.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMaps/src/database/handler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMaps/src/main/main.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMaps/src/user/login.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,64 +52,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Test",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/Users/Benjamin Liebenberg/Desktop/ToiMaps/ToiMap/main.go",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Test&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Benjamin Liebenberg/Desktop/ToiMaps&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Benjamin Liebenberg\Desktop\ToiMaps\ToiMap" />
-      <recent name="C:\Users\Benjamin Liebenberg\Desktop\ToiMaps\ToiMaps" />
       <recent name="C:\Users\Benjamin Liebenberg\Desktop\ToiMaps\ToiMaps\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build ToiMap/">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+  <component name="RunManager">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ToiMaps" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/ToiMaps/src/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build ToiMap/" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="ToiMaps" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <package value="ToiMaps/ToiMap" />
-      <directory value="$PROJECT_DIR$/ToiMap" />
-      <filePath value="$PROJECT_DIR$/ToiMap/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build ToiMaps main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
-      <module name="ToiMaps" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/../ToiMaps|$PROJECT_DIR$/ToiMap/main.go" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Go Build.go build ToiMaps main.go" />
-      <item itemvalue="Go Build.go build ToiMap/" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build ToiMap/" />
+        <item itemvalue="Go Build.go build main.go" />
       </list>
     </recent_temporary>
   </component>
@@ -185,8 +158,7 @@
     <MESSAGE value="HTML" />
     <MESSAGE value="remove" />
     <MESSAGE value="Front" />
-    <MESSAGE value="backend +" />
-    <option name="LAST_COMMIT_MESSAGE" value="backend +" />
+    <option name="LAST_COMMIT_MESSAGE" value="Front" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
