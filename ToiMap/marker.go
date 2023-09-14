@@ -1,12 +1,12 @@
 package main
 
 type Marker struct {
-	Name        string
-	Longitude   string
-	Latitude    string
-	Description string
-	Type        string
-	Tags        []Tags
+	Name      string
+	Longitude string
+	Latitude  string
+	Type      string
+	Art       string
+	Anzahl    int
 }
 
 type Tags struct {
