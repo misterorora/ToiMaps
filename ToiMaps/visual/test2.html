@@ -16,7 +16,7 @@
             max-width: 100%;
         }
         #header {
-            display: flex;
+            display: inline;
             align-content: center;
             position: absolute;
             justify-content: end;
@@ -27,9 +27,20 @@
         }
 
         .nav {
-            display: flex;
+            display: inline-flex;
             align-content: flex-end;
             justify-content: flex-end;
+            gap: 50px;
+            margin-top: 8px;
+            margin-right: 5%;
+            list-style-type: none;
+            top: 5%;
+        }
+
+        .nav2 {
+            display: inline;
+            align-content: flex-start;
+            justify-content: flex-start;
             gap: 50px;
             margin-top: 8px;
             margin-right: 5%;
@@ -46,55 +57,31 @@
         }
         #under {
             display: flex;
-            width: 100%;
-            height: 100%;
-        }
-        #leftPart {
-            display: block;
-            left: 0px;
             position: absolute;
-            align-content: center;
             top: 10%;
-            width: 25%;
+            width: 100%;
             height: 90%;
-            alignment: left;
-            background-color: aqua;
         }
 
 
     </style>
-</head>
-<div id='canva'>
-    <div id="header">
-        <ul class="nav">
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Serices</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
-    </div>
-<body class="u-body u-xl-mode" data-lang="de"><header class="u-clearfix u-header u-header" id="sec-f937"><div class="u-clearfix u-sheet u-sheet-1">
-    <h1 class="u-text u-text-default u-text-1">Toimaps</h1>
-</div></header>
-<section class="u-clearfix u-section-1" id="sec-ce7d">
-    <div class="u-clearfix u-sheet u-sheet-1"></div>
-</section>
-
-<section class="u-align-left u-clearfix u-section-1" id="sec-2103">
-    <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
-            <p style="text-align: left;">
-                <span style="line-height: 2.0;"> Sie verbringen einen schönen Tag in Berlin und haben sich die ganze Zeit über durch geschlemmt. Hier gab es mal ein Eis und dort mal einen Döner. Alles gab es dort, nur keine Toilette. So weit das Auge reicht, war keine erkenntlich. Und genau an dieser Stelle ziehen sie ihr Handy aus der Tasche und öffnen ToiMaps. Ihre Rettung! Sie erkennen sofort, wo die nächstgelegene Toilette ist.
-
-
-Die Vorzüge sehen sie sofort: Sind Menstruationsprodukte vor Ort? Kostet der Besuch Geld? Und wie bewerten andere ihren Besuch? Außerdem können sie die Toilettenarten einsehen und z.B. das nächstgelegene Missouir finden. So können sie die nächste Schlange einfach umgehen.
-
-Als kleines Entwicklerteam bestehend aus fünf Studierenden, haben wir im Rahmen einer Projektarbeit diese Software implementiert und vorgestellt. Als regelmäßige Festivalbesuchende haben wir die Vorzüge solcher Sanitärmöglichkeiten kennen und zu schätzen gelernt. Nach der Rückkehr in die Großstadt Berlin ist uns allerdings aufgefallen, wie schwer es doch ist, solch äquivalente Toiletten aufzufinden. Mit ToiMaps soll es möglich sein, einen Austausch zwischen Personen zu ermöglichen, die sich über die Qualität der öffentlichen Toiletten äußern möchten. Features dieser Anwendung sollen die Markierung von neuen öffentlichen Toiletten, Rezensionen für diese und eine Auswahl der zur Verfügung stehenden Toiletten sein. Des Weiteren soll es möglich sein, anzugeben, ob die Toilette FLINTA gerecht ist. Da die betroffenen Personen häufig Schwierigkeiten haben, ihren Bedürfnissen entsprechende Toilette zu finden. Mit ToiMaps soll dieser Prozess erleichtert werden und die Rezensionen und Bewertungen der anderen Nutzer können einem bei der Entscheidung helfen. &nbsp;</span>
-            </p>
-
-        </div>
-    </div>
-</section>
-
-
-</body></html>
+    </head>
+    <body>
+        <div>
+            <div id="header">
+                <h1 class="nav2">Toimaps</h1>
+                <ul class="nav">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Serices</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+            <div id = "under">
+                <p style="text-align: left;">
+                    <span style="line-height: 2.0;"> Sie verbringen einen schönen Tag in Berlin und haben sich die ganze Zeit über durch geschlemmt. Hier gab es mal ein Eis und dort mal einen Döner. Alles gab es dort, nur keine Toilette. So weit das Auge reicht, war keine erkenntlich. Und genau an dieser Stelle ziehen sie ihr Handy aus der Tasche und öffnen ToiMaps. Ihre Rettung! Sie erkennen sofort, wo die nächstgelegene Toilette ist. Die Vorzüge sehen sie sofort: Sind Menstruationsprodukte vor Ort? Kostet der Besuch Geld? Und wie bewerten andere ihren Besuch? Außerdem können sie die Toilettenarten einsehen und z.B. das nächstgelegene Missouir finden. So können sie die nächste Schlange einfach umgehen. Als kleines Entwicklerteam bestehend aus fünf Studierenden, haben wir im Rahmen einer Projektarbeit diese Software implementiert und vorgestellt. Als regelmäßige Festivalbesuchende haben wir die Vorzüge solcher Sanitärmöglichkeiten kennen und zu schätzen gelernt. Nach der Rückkehr in die Großstadt Berlin ist uns allerdings aufgefallen, wie schwer es doch ist, solch äquivalente Toiletten aufzufinden. Mit ToiMaps soll es möglich sein, einen Austausch zwischen Personen zu ermöglichen, die sich über die Qualität der öffentlichen Toiletten äußern möchten. Features dieser Anwendung sollen die Markierung von neuen öffentlichen Toiletten, Rezensionen für diese und eine Auswahl der zur Verfügung stehenden Toiletten sein. Des Weiteren soll es möglich sein, anzugeben, ob die Toilette FLINTA gerecht ist. Da die betroffenen Personen häufig Schwierigkeiten haben, ihren Bedürfnissen entsprechende Toilette zu finden. Mit ToiMaps soll dieser Prozess erleichtert werden und die Rezensionen und Bewertungen der anderen Nutzer können einem bei der Entscheidung helfen. &nbsp;</span>
+                </p>
+            </div> 
+        </div>   
+    </body>
+</html>
