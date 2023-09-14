@@ -32,7 +32,7 @@ func requestMarkers() ([]Marker, error) {
 	if err != nil {
 		return nil, err
 	}
-	rows, err := db.Query("SELECT Latitude, Longitude, Name, Art, Anzahl FROM Toilette") //Latitude, Longitude, Name, Art, Anzahl
+	rows, err := db.Query("SELECT (Latitude, Longitude, Name, Art, Anzahl) FROM toimapsdb.public.toilette") //Latitude, Longitude, Name, Art, Anzahl
 	if err != nil {
 		log.Fatalf("Error: Unable to execute query: %v", err)
 	}

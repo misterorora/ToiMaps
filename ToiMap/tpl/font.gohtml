@@ -88,18 +88,22 @@
 <script>
     L.mapbox.accessToken = 'pk.eyJ1Ijoib3JvcmFzdHVkIiwiYSI6ImNsbWFjYWdudTBhenYzZnB4MWRxOTQyZmgifQ.xGK5egvW3iqFN6F9zNDjFg';
     var map = L.mapbox.map('map')
-        .setView([37.9, -77], 6)
+        .setView([52.520008, 13.404954], 6)
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-
-    // L.marker is a low-level marker constructor in Leaflet.
-    L.marker([37.9, -77], {
-        icon: L.mapbox.marker.icon({
-            'marker-size': 'large',
-            'marker-symbol': 'toilet',
-            'marker-color': '#fa0'
-        })
-    }).addTo(map);
 </script>
+
+{{range $marker := .marker .}}
+    <script>
+    // L.marker is a low-level marker constructor in Leaflet.
+    var marker = L.marker([{{$marker.latitude}}, {{$marker.longitude}}], {
+    icon: L.mapbox.marker.icon({
+    'marker-size': 'large',
+    'marker-symbol': 'toilet',
+    'marker-color': '#fa0'
+    })
+    }).addTo(map);
+    </script>
+{{end}}
 
 
 </body>
