@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03d2ee97-940a-4ef9-aed1-22825e8936d1" name="Changes" comment="remove">
-      <change afterPath="$PROJECT_DIR$/ToiMaps/visual/test2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ToiMaps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ToiMaps.iml" afterDir="false" />
+    <list default="true" id="03d2ee97-940a-4ef9-aed1-22825e8936d1" name="Changes" comment="added template">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMaps/visual/test2.html" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMaps/visual/test2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="database" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,8 +52,9 @@
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "database",
+    "git-widget-placeholder": "html__template",
     "go.import.settings.migrated": "true",
     "last_opened_file_path": "C:/Users/Christian",
     "node.js.detected.package.eslint": "true",
@@ -108,7 +108,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="HTML" />
     <MESSAGE value="remove" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove" />
+    <MESSAGE value="added template" />
+    <option name="LAST_COMMIT_MESSAGE" value="added template" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
