@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset=utf-8 />
-    <title>Marker without GeoJSON</title>
+    <title>Home Toimaps</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
@@ -16,7 +16,7 @@
             max-width: 100%;
         }
         #header {
-            display: flex;
+            display: inline;
             align-content: center;
             position: absolute;
             justify-content: end;
@@ -27,9 +27,20 @@
         }
 
         .nav {
-            display: flex;
+            display: inline-flex;
             align-content: flex-end;
             justify-content: flex-end;
+            gap: 50px;
+            margin-top: 8px;
+            margin-right: 5%;
+            list-style-type: none;
+            top: 5%;
+        }
+
+        .nav2 {
+            display: inline;
+            align-content: flex-start;
+            justify-content: flex-start;
             gap: 50px;
             margin-top: 8px;
             margin-right: 5%;
@@ -58,7 +69,7 @@
             width: 25%;
             height: 90%;
             alignment: left;
-            background-color: aqua;
+            background-color: rgb(255, 255, 255);
         }
 
 
@@ -69,6 +80,7 @@
 
 <div id='canva'>
     <div id="header">
+        <h1 class="nav2">Toimaps</h1>
         <ul class="nav">
             <li><a href="">Home</a></li>
             <li><a href="">About</a></li>
@@ -79,7 +91,11 @@
 
 
     <div id='under'>
-        <div id='leftPart'></div>
+        <div id='leftPart'>
+            <div>Toiletenname: <br></div><br>
+            <div>Toilettenart: <br></div><br>
+            <div>Rezensionen: </div>
+        </div>
 
         <div id='map'></div>
 
