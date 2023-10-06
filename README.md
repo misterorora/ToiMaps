@@ -1,5 +1,5 @@
 # ToiMaps
-<<<<<<< HEAD
+
 Software Engineering I Project Gruppe 3
 
 ## Links
@@ -26,7 +26,7 @@ Christian Steiner
 5. Datenbank speichern
 6. Tags hinzufügen, dass andere Nutzer sich diese toiletten anzeigen lassen können (bsp. Genderinklusive)
 7. Benutzeranmeldung (optional)
-=======
+
 - Software Engineering I
 - Project Group 3
 - Making access to toilets easier than ever. 
@@ -86,4 +86,4 @@ Inspiration, code snippets, etc.
 * [dbader](https://github.com/dbader/readme-template)
 * [zenorocha](https://gist.github.com/zenorocha/4526327)
 * [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
->>>>>>> main
+
