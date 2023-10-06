@@ -8,6 +8,12 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="9ebe2291-947b-4f0c-8889-a399f4dea425" />
+    <option name="uniqueId" value="9843cfe3-eaf4-41d6-8356-22a5e92c7328" />
+  </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="e3f61b49-aee6-4d56-960d-02f13fd13f09" />
+  </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="382c676b-253c-4d06-88b3-6d655b318dc0" />
   </component>
 </module>

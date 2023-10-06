@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03d2ee97-940a-4ef9-aed1-22825e8936d1" name="Changes" comment="Front">
-      <change afterPath="$PROJECT_DIR$/ToiMaps/src/databaseHandler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToiMaps/src/handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToiMaps/src/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToiMaps/src/marker.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToiMaps/src/tpl/font.gohtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ToiMaps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ToiMaps.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_09_2023_10_48__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_09_2023_10_48__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_09_2023_11_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_09_2023_11_14__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/config/config.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/database/handler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/main/main.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToiMaps/src/user/login.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMap/databaseHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/databaseHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMap/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMap/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToiMap/tpl/font.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/tpl/font.gohtml" afterDir="false" />
+
     </list>
+    <list id="1b8386fd-c121-49eb-85e4-d64b22d4a83e" name="Changes by Benjamin L" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,18 +23,25 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go File" />
+        <option value="Go File" />https://github.com/misterorora/ToiMaps/pull/12/conflict?name=.idea%252Fworkspace.xml&ancestor_oid=cd8b965c40200fbda7c8ec9fdee270fd9a04b7cb&base_oid=01a3746b1eb3ffb2251f9d9d4e74635c22420cf0&head_oid=a64bacc6e68ce92269b703355424e10755c53094
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../Program Files/Go" />
+  <component name="GOROOT" url="file://$USER_HOME$/go/go1.21.1" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Test" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="true" />
@@ -48,6 +53,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2V6hlxvsaBGBCWZ2S2ZeAYTZqjQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -61,13 +69,17 @@
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Test&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Benjamin Liebenberg/Desktop/ToiMaps&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -76,19 +88,14 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build ToiMap/" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="ToiMaps" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/ToiMap" />
       <filePath value="$PROJECT_DIR$/ToiMaps/src/main.go" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Go Build.go build main.go" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
