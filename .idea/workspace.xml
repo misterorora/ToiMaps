@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/ToiMap/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToiMap/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToiMap/tpl/font.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/ToiMap/tpl/font.gohtml" afterDir="false" />
+
     </list>
     <list id="1b8386fd-c121-49eb-85e4-d64b22d4a83e" name="Changes by Benjamin L" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +23,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go File" />
+        <option value="Go File" />https://github.com/misterorora/ToiMaps/pull/12/conflict?name=.idea%252Fworkspace.xml&ancestor_oid=cd8b965c40200fbda7c8ec9fdee270fd9a04b7cb&base_oid=01a3746b1eb3ffb2251f9d9d4e74635c22420cf0&head_oid=a64bacc6e68ce92269b703355424e10755c53094
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../Program Files/Go" />
+  <component name="GOROOT" url="file://$USER_HOME$/go/go1.21.1" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -68,8 +69,6 @@
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Benjamin Liebenberg/Desktop/ToiMaps&quot;,
