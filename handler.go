@@ -29,7 +29,10 @@ func (h *Handler) defaultVars() map[string]any {
 
 func (h *Handler) getHome(ctx *gin.Context) {
 	data := h.defaultVars()
-	marker := "direct access database -> formatted to marker struct -> databaseHandler.GetMarkers"
+	marker, err := "Test", error(nil) //requestMarkers()
+	if err != nil {
+		panic(err)
+	}
 
 	data["marker"] = marker
 	ctx.HTML(http.StatusOK, "font.gohtml", data)
