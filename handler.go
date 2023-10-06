@@ -29,7 +29,11 @@ func (h *Handler) defaultVars() map[string]any {
 
 func (h *Handler) getHome(ctx *gin.Context) {
 	data := h.defaultVars()
+<<<<<<< HEAD:handler.go
+	marker, err := "Test", error(nil) //requestMarkers()
+=======
 	marker, err := requestMarkers()
+>>>>>>> main:ToiMap/handler.go
 	if err != nil {
 		panic(err)
 	}
