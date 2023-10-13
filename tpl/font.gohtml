@@ -95,9 +95,14 @@
 
     <div id='under'>
         <div id='leftPart'>
-            <div>Toiletenname: <br></div><br>
-            <div>Toilettenart: <br></div><br>
-            <div>Rezensionen: </div>
+            <form style="padding-left: 10px; font-size: 25px; line-height: 40px;">
+                <input type="checkbox" name="Male" title="Male" value="Male" id="Male">
+                <label for="Male">Male</label><br>
+                <input type="checkbox" name="Female" title="Female" value="Female" id="Female">
+                <label for="Female">Female</label><br>
+                <input type="checkbox" name="FLINTA" title="FLINTA" value="FLINTA" id="FLINTA">
+                <label for="FLINTA">FLINTA</label><br>
+            </form>
         </div>
 
         <div id='map'></div>
@@ -111,15 +116,11 @@
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
     // L.marker is a low-level marker constructor in Leaflet.
-    L.marker([37.9, -77], {
-        icon: L.mapbox.marker.icon({
-            'marker-size': 'large',
-            'marker-symbol': 'toilet',
-            'marker-color': '#fa0'
-        })
-    }).addTo(map);
+
+
+
+    
 </script>
 
 </body>
 </html>
-
