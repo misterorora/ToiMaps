@@ -2,10 +2,13 @@ package main
 
 import (
 	"embed"
+	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 //go:embed tpl/*
@@ -34,6 +37,24 @@ func (h *Handler) getHome(ctx *gin.Context) {
 		panic(err)
 	}
 
+	file, err1 := os.Open("map.geojson")
+	if err1 != nil {
+		fmt.Println("Error opening file:", err1)
+		return
+	}
+	defer file.Close() // Close the file when we're done
+
+	// Create a JSON decoder
+	decoder := json.NewDecoder(file)
+
+	var geo map[string]interface{} // Change the type according to your JSON structure
+	if err1 := decoder.Decode(&geo); err1 != nil {
+		fmt.Println("Error decoding JSON:", err1)
+		return
+	}
+
+	fmt.Println(geo)
+	data["geo"] = geo
 	data["marker"] = marker
 	ctx.HTML(http.StatusOK, "font.gohtml", data)
 }
