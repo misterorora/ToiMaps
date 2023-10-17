@@ -24,6 +24,9 @@ type Handler struct {
 
 func (h *Handler) Register(router gin.IRouter) {
 	router.GET("/home", h.getHome)
+	router.GET("/about", h.getAbout)
+	router.GET("/service", h.getService)
+	router.GET("/contact", h.getContact)
 }
 
 func (h *Handler) defaultVars() map[string]any {
@@ -53,8 +56,21 @@ func (h *Handler) getHome(ctx *gin.Context) {
 		return
 	}
 
-	fmt.Println(geo)
 	data["geo"] = geo
 	data["marker"] = marker
-	ctx.HTML(http.StatusOK, "font.gohtml", data)
+	ctx.HTML(http.StatusOK, "home.gohtml", data)
+}
+
+func (h *Handler) getAbout(ctx *gin.Context) {
+	data := h.defaultVars()
+	ctx.HTML(http.StatusOK, "about.gohtml", data)
+}
+
+func (h *Handler) getContact(ctx *gin.Context) {
+	data := h.defaultVars()
+	ctx.HTML(http.StatusOK, "contact.gohtml", data)
+}
+func (h *Handler) getService(ctx *gin.Context) {
+	data := h.defaultVars()
+	ctx.HTML(http.StatusOK, "service.gohtml", data)
 }
