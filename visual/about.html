@@ -66,6 +66,14 @@
             width: 100%;
             height: 90%;
             padding-left: 10px;
+            background-image: url(background.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+            background-size: 100% 100%;
+        }
+        #ausrichtung {
+            padding-left: 5px;
+            padding-top: 5px;
         }
 
 
@@ -74,6 +82,7 @@
     <body>
         <div>
             <div id="header">
+                <img src="Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
                 <h1 class="nav2">ToiMaps</h1>
                 <ul class="nav">
                     <li><a href="">Home</a></li>
@@ -83,15 +92,22 @@
                 </ul>
             </div>
             <div id = "under">
-                <h2>About ToiMaps&nbsp;</h2>
-                <p>
-                    <span style="line-height: 2.0;">ToiMaps ist ein Studentenprojekt, mit dem wir Studenten den Themen bereich Softwareengineering näher kennen lernen sollen. <br>
-                        ToiMaps speziell dient dabei als eine Austauschplattform für die nächst gelegene Toilette. Sie soll helfen, eine Toilette entsprechend den eigenen Bedürfnissen zu finden. &nbsp;</span>
-                </p>
-                <h2>About Us</h2>
-                <p>
-                    <span style="line-height: 2.0;">Wir sind ein kleines Studententeam bestehend aus 5 Studenten, die alle an der HWR-Berlin Informatik Studieren.</span>
-                </p>
+                <table style="margin-top: 2%;">
+                    <tr>
+                        <td style="width: 10%;"></td>
+                        <td style="background-color: azure; width: 80%;" id="ausrichtung">
+                            <h2>About ToiMaps&nbsp;</h2>
+                            <p>
+                                <span style="line-height: 2.0;">ToiMaps ist eine Austauschplattform für alle, die die nächstgelegene Toilette suchen. Sie bietet Funktionen wie Toilette hinzufügen, bewerten und filtern nach der nächst gelegen Toilette für das eigene Geschlecht oder entsprechend der eigenen Bedürfnisse. ToiMaps ist auch genderfreundlich, indem speziell auch nach Toiletten für FLINTA gesucht werden kann.&nbsp;</span>
+                            </p>
+                            <h2>About Us</h2>
+                            <p>
+                                <span style="line-height: 2.0;">Wir sind ein kleines Entwicklerteam bestehend aus fünf Studenten der HWR-Berlin. ToiMaps ist im Zuge eines Studienprojektes entstanden, bei dem wir den Themenbereich Softwareengineering näher kennenlernen sollten. Die Idee für ToiMaps ist aus Besuchen von Festivals entstanden, bei denen die Toilettenbeschreibungen und -zuteilungen sehr gut gehandhabt wurde. Daher wollten wir unseren Mitmenschen eine Plattform bieten, mit der sie sich gegenseitig helfen können, die nächstgelegene Toilette zu finden.</span>
+                            </p>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
             </div> 
         </div>   
     </body>
