@@ -115,6 +115,8 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="FLINTA" title="FLINTA" value="FLINTA" id="FLINTA">
                                 <label for="FLINTA">FLINTA</label><br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Neue Toilette">
+
+                                <p>Latitude: {{ .latitude}} </p>
                             </form>
                         </td>
                     </tr>
@@ -122,4 +124,51 @@
             </div> 
         </div>   
     </body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    const { createApp } = Vue;
+
+    createApp({
+        data() {
+            return {
+                accessToken: 'pk.eyJ1Ijoic3RlaW5icmluZyIsImEiOiJja2t1YjE3ZXEwZ3R0MnBqdWo2cHRkOW5sIn0.OEPMk0xJ6j2zIq1zZN9yMg',
+                address: null,
+                latitude: null,
+                longitude: null,
+            }
+        },
+        methods: {
+            async getCoordinates(address) {
+                const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${this.accessToken}`;
+
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (data.features.length > 0) {
+                        const location = data.features[0].center;
+                        return {
+                            latitude: location[1],
+                            longitude: location[0]
+                        };
+                    } else {
+                        throw new Error(`Unable to geocode address: ${address}`);
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            getCoordinatesButton() {
+                this.getCoordinates(this.address)
+                    .then(coordinates => {
+                        this.latitude = coordinates.latitude;
+                        this.longitude = coordinates.longitude;
+                    });
+            }
+        }
+    }).mount('#app');
+</script>
+
 </html>
