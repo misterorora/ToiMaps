@@ -2,10 +2,12 @@ package main
 
 import (
 	"embed"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 //go:embed tpl/*
@@ -38,6 +40,13 @@ func (h *Handler) getHome(ctx *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
+
+	file, err1 := os.Open("map.geojson")
+	if err1 != nil {
+		fmt.Println("Error opening file:", err1)
+		return
+	}
+	defer file.Close() // Close the file when we're done
 
 	data["geo"] = loadJSON()
 	data["marker"] = marker
@@ -72,12 +81,11 @@ func (h *Handler) handleFrontendData(ctx *gin.Context) {
 	}
 
 	//save to json --> in JsonHandler class
-
 	feature := Features{
 		Type:       "Feature",
-		Properties: Properties{MarkerSymbol: "toilet", Name: requestData.Name},
+		Properties: Properties{MarkerSymbol: "toilet", Type: requestData.Type},
 		Geometry: Geometry{
-			Coords: []float64{requestData.Lat, requestData.Long},
+			Coords: []float64{requestData.Long, requestData.Lat},
 			Type:   "Point",
 		},
 	}
