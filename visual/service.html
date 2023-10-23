@@ -85,10 +85,10 @@
                 <img src="/visual/Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
                 <h1 class="nav2">ToiMaps</h1>
                 <ul class="nav">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/service">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
             <div id = "under">
@@ -101,9 +101,9 @@
                             <p>
                                <span style="line-height: 2.0;">Wenn Sie eine Toilette gefunden haben, die noch nicht auf der Plattform ist können Sie sie hier einfügen lassen.</span>
                             </p>
-                            <form action="" style="line-height: 2.0;">
                                 <label for="Toilettenname">Toilettenname: &nbsp;&nbsp;</label>
                                 <input type="text" name="Toilettenname" id="Toilettenname" maxlength="50"><br>
+                                <label for="addressInput">Toilettenname: &nbsp;&nbsp;</label>
                                 <input id="addressInput" placeholder="Adresse eingeben"><br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="Male" title="Male" value="Male" id="Male">
                                 <label for="Male">Male</label><br>
@@ -116,11 +116,10 @@
 
                                 <p>Latitude: <span id="latitudeSpan"></span></p>
                                 <p>Longitude: <span id="longitudeSpan"></span></p>
-                            </form>
                         </td>
                     </tr>
                 </table>
-            </div> 
+            </div>
         </div>
 
         <script>
@@ -158,6 +157,7 @@
                     throw error;
                 }
             }
+
         </script>
     </body>
 </html>

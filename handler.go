@@ -2,13 +2,10 @@ package main
 
 import (
 	"embed"
-	"encoding/json"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"net/http"
 	"net/url"
-	"os"
 )
 
 //go:embed tpl/*
@@ -27,6 +24,7 @@ func (h *Handler) Register(router gin.IRouter) {
 	router.GET("/about", h.getAbout)
 	router.GET("/service", h.getService)
 	router.GET("/contact", h.getContact)
+	router.POST("/backend-endpoint", h.handleFrontendData)
 }
 
 func (h *Handler) defaultVars() map[string]any {
@@ -36,27 +34,12 @@ func (h *Handler) defaultVars() map[string]any {
 func (h *Handler) getHome(ctx *gin.Context) {
 	data := h.defaultVars()
 	marker, err := "Test", error(nil) //requestMarkers()
+
 	if err != nil {
 		panic(err)
 	}
 
-	file, err1 := os.Open("map.geojson")
-	if err1 != nil {
-		fmt.Println("Error opening file:", err1)
-		return
-	}
-	defer file.Close() // Close the file when we're done
-
-	// Create a JSON decoder
-	decoder := json.NewDecoder(file)
-
-	var geo map[string]interface{} // Change the type according to your JSON structure
-	if err1 := decoder.Decode(&geo); err1 != nil {
-		fmt.Println("Error decoding JSON:", err1)
-		return
-	}
-
-	data["geo"] = geo
+	data["geo"] = loadJSON()
 	data["marker"] = marker
 	ctx.HTML(http.StatusOK, "home.gohtml", data)
 }
@@ -73,4 +56,34 @@ func (h *Handler) getContact(ctx *gin.Context) {
 func (h *Handler) getService(ctx *gin.Context) {
 	data := h.defaultVars()
 	ctx.HTML(http.StatusOK, "service.gohtml", data)
+}
+func (h *Handler) handleFrontendData(ctx *gin.Context) {
+
+	var requestData struct {
+		Lat  float64 `json:"lat"`
+		Long float64 `json:"long"`
+		Name string  `json:"name"`
+		Type string  `json:"type"`
+	}
+	if err := ctx.ShouldBindJSON(&requestData); err != nil {
+		// Handle error, possibly return an error response
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	//save to json --> in JsonHandler class
+
+	feature := Features{
+		Type:       "Feature",
+		Properties: Properties{MarkerSymbol: "toilet", Name: requestData.Name},
+		Geometry: Geometry{
+			Coords: []float64{requestData.Lat, requestData.Long},
+			Type:   "Point",
+		},
+	}
+
+	saveJSON(feature)
+
+	ctx.JSON(http.StatusOK, gin.H{"message": "Data received successfully"})
+
 }
