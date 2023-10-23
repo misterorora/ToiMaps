@@ -6,9 +6,9 @@
     <meta name="description" content="">
     <title>About Toimaps</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+</head>
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; bottom:0; left: 25%; width: 75%; height: 90%;}
         * {
             margin: 0;
             padding: 0;
@@ -78,17 +78,17 @@
 
 
     </style>
-    </head>
+
     <body>
         <div>
             <div id="header">
                 <img src="/visual/Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
                 <h1 class="nav2">ToiMaps</h1>
                 <ul class="nav">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/service">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
             <div id = "under">
@@ -101,25 +101,63 @@
                             <p>
                                <span style="line-height: 2.0;">Wenn Sie eine Toilette gefunden haben, die noch nicht auf der Plattform ist können Sie sie hier einfügen lassen.</span>
                             </p>
-                            <form action="" style="line-height: 2.0;">
                                 <label for="Toilettenname">Toilettenname: &nbsp;&nbsp;</label>
                                 <input type="text" name="Toilettenname" id="Toilettenname" maxlength="50"><br>
-                                <label for="koordinaten">Adresse:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                <input type="text" name="koordinaten" id="koordinaten" maxlength="50"><br>
-                                <label for="Postleitzahl">Postleitzahl: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                <input type="text" name="Postleitzahl" id="Postleitzahl" maxlength="50"><br>
+                                <label for="addressInput">Toilettenname: &nbsp;&nbsp;</label>
+                                <input id="addressInput" placeholder="Adresse eingeben"><br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="Male" title="Male" value="Male" id="Male">
                                 <label for="Male">Male</label><br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="Female" title="Female" value="Female" id="Female">
                                 <label for="Female">Female</label><br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="FLINTA" title="FLINTA" value="FLINTA" id="FLINTA">
                                 <label for="FLINTA">FLINTA</label><br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Neue Toilette">
-                            </form>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button id="getCoordinatesButton">Neue Toilette</button>
+
+                                <p>Latitude: <span id="latitudeSpan"></span></p>
+                                <p>Longitude: <span id="longitudeSpan"></span></p>
                         </td>
                     </tr>
                 </table>
-            </div> 
-        </div>   
+            </div>
+        </div>
+
+        <script>
+            const accessToken = 'pk.eyJ1Ijoic3RlaW5icmluZyIsImEiOiJja2t1YjE3ZXEwZ3R0MnBqdWo2cHRkOW5sIn0.OEPMk0xJ6j2zIq1zZN9yMg';
+
+            document.getElementById('getCoordinatesButton').addEventListener('click', () => {
+                const address = document.getElementById('addressInput').value;
+                getCoordinates(address)
+                    .then(coordinates => {
+                        document.getElementById('latitudeSpan').textContent = coordinates.latitude;
+                        document.getElementById('longitudeSpan').textContent = coordinates.longitude;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            });
+
+            async function getCoordinates(address) {
+                const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${accessToken}`;
+
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (data.features.length > 0) {
+                        const location = data.features[0].center;
+                        return {
+                            latitude: location[1],
+                            longitude: location[0]
+                        };
+                    } else {
+                        throw new Error(`Unable to geocode address: ${address}`);
+                    }
+                } catch (error) {
+                    throw error;
+                }
+            }
+
+        </script>
     </body>
 </html>
