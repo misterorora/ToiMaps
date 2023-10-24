@@ -36,8 +36,6 @@ func loadJSON() map[string]interface{} {
 		return nil
 	}
 	defer file.Close() // Close the file when we're done
-	fmt.Println("----!laoding done!----")
-
 	// Create a JSON decoder
 	decoder := json.NewDecoder(file)
 
@@ -46,8 +44,6 @@ func loadJSON() map[string]interface{} {
 		fmt.Println("Error decoding JSON:", err1)
 		return nil
 	}
-	fmt.Println(geo)
-	fmt.Println("decoding done")
 	return geo
 }
 
