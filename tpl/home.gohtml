@@ -124,36 +124,83 @@
     </div>
 </div>
 <script>
-
     var geojson = {{.geo}}
+
         L.mapbox.accessToken = 'pk.eyJ1Ijoib3JvcmFzdHVkIiwiYSI6ImNsbWFjYWdudTBhenYzZnB4MWRxOTQyZmgifQ.xGK5egvW3iqFN6F9zNDjFg';
     var map = L.mapbox.map('map')
         .setView([ 52.516514825737175, 13.380956275053023], 7)
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'))
         .featureLayer.setGeoJSON(geojson);
-    /*
-        L.marker([37.9, -77], {
-            icon: L.mapbox.marker.icon({
-                'marker-size': 'large',
-                'marker-symbol': 'toilet',
-                'marker-color': '#fa0'
-            })
-        }).addTo(map);
-    */
+
+    map.addSource('custom-source', {
+        type: 'geojson',
+        data: 'map.geojson'
+    });
+
+    map.addLayer({
+        id: 'custom-layer-id', // This is your custom layerId
+        type: 'fill', // This can be 'circle', 'line', etc.
+        source: 'custom-source',
+        layout: {},
+        paint: {
+        }
+    });
 
 
 
-    var filter = document.getElementById('button');
+    document.getElementById('button').addEventListener('click', () => {
 
 
-    /*
-    filter.onclick = function (e) {
-        featureLayer.setFilter(function(f){
-            return f.properties['marker-symbol'] === 'toilet';
-        });
-        return false;
-    };
-    */
+        map.setFilter('custom-layer-id', null);
+
+        const male = document.getElementById("Male").checked;
+        const female = document.getElementById("Female").checked;
+        const flinta = document.getElementById("FLINTA").checked;
+
+        const filterValues = ['male', 'female', 'flinta']
+        let filterExpression;
+
+        if (male) {
+            if (female) {
+                if (flinta) {
+                    filterExpression = ['any']
+                } else {
+                    // male and female are true, flinta is false
+                    filterExpression = ['!=', 'type', filterValues[2]]
+                }
+            } else {
+                if (flinta) {
+                    // male and flinta are true, female is false
+                    filterExpression = ['!=', 'type', filterValues[1]]
+                } else {
+                    // male is true, female and flinta are false
+                    filterExpression = ['==', 'type', filterValues[0]]
+                }
+            }
+        } else {
+            if (female) {
+                if (flinta) {
+                    // female and flinta are true, male is false
+                    filterExpression = ['!=', 'type', filterValues[0]]
+                } else {
+                    // female is true, male and flinta are false
+                    filterExpression = ['==', 'type', filterValues[1]]
+                }
+            } else {
+                if (flinta) {
+                    // flinta is true, male and female are false
+                    filterExpression = ['==', 'type', filterValues[2]]
+                } else {
+                    // All choices are false
+                    filterExpression = ['any']
+                }
+            }
+        }
+
+
+        map.setFilter('custom-layer-id', filterExpression);
+
+    })
 </script>
 
 </body>

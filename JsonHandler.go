@@ -8,8 +8,8 @@ import (
 )
 
 type GeoMap struct {
-	Type     string `json:"type"`
-	Features []Features
+	Type     string     `json:"type"`
+	Features []Features `json:"features"`
 }
 
 type Features struct {
@@ -20,7 +20,8 @@ type Features struct {
 
 type Properties struct {
 	MarkerSymbol string `json:"marker-symbol"`
-	Name         string `json:"name"`
+	//Name         string `json:"name"`
+	Type string `json:"type"`
 }
 
 type Geometry struct {
@@ -35,8 +36,6 @@ func loadJSON() map[string]interface{} {
 		return nil
 	}
 	defer file.Close() // Close the file when we're done
-	fmt.Println("----!laoding done!----")
-
 	// Create a JSON decoder
 	decoder := json.NewDecoder(file)
 
@@ -45,8 +44,6 @@ func loadJSON() map[string]interface{} {
 		fmt.Println("Error decoding JSON:", err1)
 		return nil
 	}
-	fmt.Println(geo)
-	fmt.Println("decoding done")
 	return geo
 }
 
@@ -55,17 +52,20 @@ func saveJSON(newFeature Features) {
 	found := false
 
 	for _, feature := range geo.Features {
-		if feature.Properties.Name == newFeature.Properties.Name {
-			if feature.Geometry.Coords[0] == newFeature.Geometry.Coords[0] {
-				if feature.Geometry.Coords[1] == newFeature.Geometry.Coords[1] {
-					found = true
-					break
-				}
+		if feature.Geometry.Coords[0] == newFeature.Geometry.Coords[0] {
+			if feature.Geometry.Coords[1] == newFeature.Geometry.Coords[1] {
+				found = true
+				break
 			}
 		}
+
 	}
 	if !found {
 		geo.Features = append(geo.Features, newFeature)
+	}
+
+	if geo.Type == "" {
+		geo.Type = "FeatureCollection"
 	}
 
 	jsonData, err := json.Marshal(geo)
