@@ -96,7 +96,20 @@
             font-size: 16px;
             cursor: pointer;
         }
-        
+        #DataAndComment {
+            background-color: #adadad;
+            visibility: hidden;
+        }
+        .listing {
+            border: 2px solid white;
+            display: flex;
+            width: 90%;
+            height: auto;
+            box-sizing: border-box;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: white;
+        }
 
     </style>
 </head>
@@ -128,18 +141,17 @@
                 <button type="button" name="button" id="button">Filter</button>
 
             </form>
-            <br><hr><br>
-            <div style="padding-left: 10px; font-size: 25px; line-height: 40px;">
+            <br><hr>
+            <div id="DataAndComment" style="padding-left: 10px; font-size: 25px; line-height: 40px;">
                 <label for="Name">Name:</label>
-                <output type="text" id="Name" name="Name" style="height: 30px;"><br>
+                <output type="text" id="Name" name="Name" style="height: 30px;"></output><br>
                 <label for="description">Beschreibung:</label> <br>
-                <output type="text" id="description" name="description" style="height: 30px;"><br>
+                <output type="text" id="description" name="description" style="height: 30px;"></output><br>
                 <label for="Comment">Rezension:</label><br>
-                <textarea name="Comment" id="Comment" cols="50" rows="4" placeholder="Rezension" style="resize: none;" maxlength="150"></textarea>
+                <textarea id="myTextarea" name="Comment"  cols="45" rows="5" placeholder="Rezension" style="resize: none;" maxlength="150"></textarea>
                 <button type="button" name="commenting" id="commenting">Rezension hinzufügen</button><br>
                 <label for="Rezensionen">Rezensionen: </label><br>
-                <div id="Rezensionen" name="Rezensionen" style="overflow: auto; height: 200px; font-size: 20px;">
-                    Rezensionen anzeigen lassen
+                <div id="rezensionen" name="Rezensionen" style="overflow: auto; height: 200px; font-size: 20px;">
                 </div>
             </div>
         </div>
@@ -149,18 +161,63 @@
     </div>
 </div>
 <script>
-    var geojson = {{.geo}}
 
+    var currentLat;
+    var currentLong;
+    var currentName;
+
+
+
+    var geojson = {{.geo}}
         L.mapbox.accessToken = 'pk.eyJ1Ijoib3JvcmFzdHVkIiwiYSI6ImNsbWFjYWdudTBhenYzZnB4MWRxOTQyZmgifQ.xGK5egvW3iqFN6F9zNDjFg';
     var map = L.mapbox.map('map')
         .setView([ 52.516514825737175, 13.380956275053023], 7)
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'))
-        //.featureLayer.setGeoJSON(geojson);
 
     var myFeatureLayer = L.mapbox.featureLayer(geojson)
         .addTo(map);
 
+    myFeatureLayer.eachLayer(function (marker) {
+        marker.on('click', function () {
+            var emptyPopup = L.popup().setContent('');
+            marker.bindPopup(emptyPopup).openPopup();
+            handleMarkerClick(marker);
+            return false
+        })
 
+    })
+
+    function handleMarkerClick(marker) {
+
+        while( document.getElementById('rezensionen').firstChild){
+            document.getElementById('rezensionen').removeChild( document.getElementById('rezensionen').firstChild)
+        }
+
+        document.getElementById('DataAndComment').style.visibility = 'visible';
+
+        currentLong = marker.feature.geometry.coordinates[0];
+        currentLat = marker.feature.geometry.coordinates[1];
+
+        let selectedMarker = marker.feature.properties;
+
+        currentName = selectedMarker.name;
+        document.getElementById('Name').textContent = selectedMarker.name;
+        document.getElementById('description').textContent = selectedMarker.description;
+
+        var recension = selectedMarker.recension;
+
+        recension.forEach(function (item) {
+            var listing = document.createElement('output');
+            listing.type = 'text';
+            listing.setAttribute('readonly', true);
+            listing.value = item;
+            listing.classList.add('listing');
+            document.getElementById('rezensionen').appendChild(listing);
+        });
+
+
+
+    }
 
     document.getElementById('button').addEventListener('click', () => {
 
@@ -222,16 +279,48 @@
 
                     filter = function (features) {
                         return true;
-
-
                     }
                 }
             }
 
         }
-
         myFeatureLayer.setFilter(filter)
     })
+
+    document.getElementById('commenting').addEventListener('click', ()=> {
+
+        var comment = document.getElementById("myTextarea").value
+
+        if(comment.trim() === "") {
+            alert("Bitte gib etwas in das Rezensionen-Feld ein");
+            return
+        }
+
+        fetch("/comment-endpoint", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                lat: currentLat,
+                long: currentLong,
+                name: currentName,
+                comment: document.getElementById("myTextarea").value
+            })
+        }).then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+            .then((data) => {
+                console.log("Response data:", data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    })
+
 </script>
 
 </body>

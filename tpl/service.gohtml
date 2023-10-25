@@ -102,7 +102,11 @@
                         <span style="line-height: 2.0;">Wenn Sie eine Toilette gefunden haben, die noch nicht auf der Plattform ist können Sie sie hier einfügen lassen.</span>
                     </p>
                     <label for="Toilettenname">Toilettenname: &nbsp;&nbsp;</label>
-                    <input type="text" name="Toilettenname" id="Toilettenname" maxlength="50"><br>
+                    <input type="text" name="Toilettenname" id="Toilettenname" maxlength="50"><br><br>
+                    <label for="Description">Beschreibung:</label><br>
+                    <textarea name="Description" id="Description" cols="50" rows="4" placeholder="Beschreibung" style="resize: none;" maxlength="150"></textarea>
+                    <br>
+                    <br>
                     <label for="addressInput">Adresse: &nbsp;&nbsp;</label>
                     <input id="addressInput" placeholder="Adresse eingeben"><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="Male" title="Male" value="Male" id="Male">
@@ -141,6 +145,7 @@
                         lat: coordinates.latitude,
                         long: coordinates.longitude,
                         name: document.getElementById('Toilettenname').value,
+                        description: document.getElementById('Description').value,
                         type: getType()
                     })
                 }).then((response) => {

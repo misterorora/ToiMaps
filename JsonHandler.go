@@ -19,9 +19,11 @@ type Features struct {
 }
 
 type Properties struct {
-	MarkerSymbol string `json:"marker-symbol"`
-	//Name         string `json:"name"`
-	Type string `json:"type"`
+	MarkerSymbol string   `json:"marker-symbol"`
+	Name         string   `json:"name"`
+	Description  string   `json:"description"`
+	Type         string   `json:"type"`
+	Recension    []string `json:"recension"`
 }
 
 type Geometry struct {
@@ -100,4 +102,39 @@ func unMarshJSON() GeoMap {
 	}
 
 	return geo
+}
+
+func addComment(comment *Comment) {
+	geo := unMarshJSON()
+	for i, feature := range geo.Features {
+		if feature.Geometry.Coords[0] == comment.Long {
+			if feature.Geometry.Coords[1] == comment.Lat {
+				if feature.Properties.Name == comment.Name {
+
+					for _, old_recension := range feature.Properties.Recension {
+						if old_recension == comment.Comment {
+							return
+						}
+					}
+					array := feature.Properties.Recension
+					array = append(array, comment.Comment)
+					geo.Features[i].Properties.Recension = array
+					break
+				}
+			}
+		}
+
+	}
+
+	jsonData, err := json.Marshal(geo)
+	if err != nil {
+		fmt.Println("error while marshalling: ", err)
+		return
+	}
+
+	err = os.WriteFile("map.geojson", jsonData, 0644)
+	if err != nil {
+		fmt.Println("error while writing to file: ", err)
+		return
+	}
 }
