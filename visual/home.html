@@ -85,6 +85,17 @@
             font-size: 16px;
             cursor: pointer;
         }
+        #commenting {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
 
     </style>
@@ -117,6 +128,20 @@
                 <button type="button" name="button" id="button">Filter</button>
 
             </form>
+            <br><hr><br>
+            <div style="padding-left: 10px; font-size: 25px; line-height: 40px;">
+                <label for="Name">Name:</label>
+                <output type="text" id="Name" name="Name" style="height: 30px;"><br>
+                <label for="description">Beschreibung:</label> <br>
+                <output type="text" id="description" name="description" style="height: 30px;"><br>
+                <label for="Comment">Rezension:</label><br>
+                <textarea name="Comment" id="Comment" cols="50" rows="4" placeholder="Rezension" style="resize: none;" maxlength="150"></textarea>
+                <button type="button" name="commenting" id="commenting">Rezension hinzufügen</button><br>
+                <label for="Rezensionen">Rezensionen: </label><br>
+                <div id="Rezensionen" name="Rezensionen" style="overflow: auto; height: 200px; font-size: 20px;">
+                    Rezensionen anzeigen lassen
+                </div>
+            </div>
         </div>
 
         <div id='map'></div>
