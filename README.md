@@ -12,10 +12,10 @@ Software Engineering I Project Gruppe 3
 
 ## Gruppenmitglieder 
 Gruppe 3
-Annika Matz
-Tobias Reetz
-Benjamin Liebenberg
-Nicolas Hermosillo Orendain
+Annika Matz,
+Tobias Reetz,
+Benjamin Liebenberg,
+Nicolas Hermosillo Orendain,
 Christian Steiner
 
 ## Feature List 
