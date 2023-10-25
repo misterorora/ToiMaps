@@ -101,13 +101,14 @@
             visibility: hidden;
         }
         .listing {
-            border: 1px solid white;
+            border: 2px solid white;
             display: flex;
-            width: 80%;
+            width: 90%;
             height: auto;
             box-sizing: border-box;
             margin-top: 10px;
             margin-bottom: 10px;
+            background-color: white;
         }
 
     </style>
@@ -147,7 +148,7 @@
                 <label for="description">Beschreibung:</label> <br>
                 <output type="text" id="description" name="description" style="height: 30px;"></output><br>
                 <label for="Comment">Rezension:</label><br>
-                <textarea id="myTextarea" name="Comment"  cols="50" rows="4" placeholder="Rezension" style="resize: none;" maxlength="150"></textarea>
+                <textarea id="myTextarea" name="Comment"  cols="45" rows="5" placeholder="Rezension" style="resize: none;" maxlength="150"></textarea>
                 <button type="button" name="commenting" id="commenting">Rezension hinzufügen</button><br>
                 <label for="Rezensionen">Rezensionen: </label><br>
                 <div id="rezensionen" name="Rezensionen" style="overflow: auto; height: 200px; font-size: 20px;">
@@ -187,9 +188,9 @@
     })
 
     function handleMarkerClick(marker) {
-        var elementToDelete = document.querySelector('[name="listing"]')
-        if(listing){
-            listing.remove();
+
+        while( document.getElementById('rezensionen').firstChild){
+            document.getElementById('rezensionen').removeChild( document.getElementById('rezensionen').firstChild)
         }
 
         document.getElementById('DataAndComment').style.visibility = 'visible';
@@ -206,10 +207,11 @@
         var recension = selectedMarker.recension;
 
         recension.forEach(function (item) {
-            var listing = document.createElement('listing');
+            var listing = document.createElement('output');
+            listing.type = 'text';
+            listing.setAttribute('readonly', true);
+            listing.value = item;
             listing.classList.add('listing');
-
-
             document.getElementById('rezensionen').appendChild(listing);
         });
 

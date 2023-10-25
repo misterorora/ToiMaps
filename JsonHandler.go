@@ -110,6 +110,12 @@ func addComment(comment *Comment) {
 		if feature.Geometry.Coords[0] == comment.Long {
 			if feature.Geometry.Coords[1] == comment.Lat {
 				if feature.Properties.Name == comment.Name {
+
+					for _, old_recension := range feature.Properties.Recension {
+						if old_recension == comment.Comment {
+							return
+						}
+					}
 					array := feature.Properties.Recension
 					array = append(array, comment.Comment)
 					geo.Features[i].Properties.Recension = array
