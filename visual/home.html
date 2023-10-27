@@ -96,7 +96,31 @@
             font-size: 16px;
             cursor: pointer;
         }
-
+        #DataAndComment {
+            background-color: #adadad;
+            visibility: hidden;
+        }
+        .listing {
+            border: 2px solid white;
+            display: flex;
+            width: 90%;
+            height: auto;
+            box-sizing: border-box;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: white;
+        }
+        #pos {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
     </style>
 </head>
@@ -105,13 +129,13 @@
 
 <div id='canva'>
     <div id="header">
-        <img src="Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
+        <img src="/visual/Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
         <h1 class="nav2">ToiMaps</h1>
         <ul class="nav">
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Services</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/service">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
         </ul>
     </div>
 
@@ -122,102 +146,195 @@
                 <input type="checkbox" name="Male" title="Male" value="Male" id="Male">
                 <label for="Male">Male</label><br>
                 <input type="checkbox" name="Female" title="Female" value="Female" id="Female">
-                <label for="Female">Female</label><br>
+                <label for="Female">Female &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><button type="button" name="button" id="button">Filter</button><br>
                 <input type="checkbox" name="FLINTA" title="FLINTA" value="FLINTA" id="FLINTA">
                 <label for="FLINTA">FLINTA</label><br>
-                <button type="button" name="button" id="button">Filter</button>
+                
 
             </form>
-            <br><hr><br>
-            <div style="padding-left: 10px; font-size: 25px; line-height: 40px;">
+            <br><hr>
+            <div style="padding-left: 10px; font-size: 22px; line-height: 40px;">
+                <label for="eigenerStandort">Gehe zur eigenen Position</label><br>
+                <input type="text" name="eigenerStandort" id="eigenerStandort" placeholder="eigener Standort">&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" name="pos" id="pos">Position</button>
+            </div>
+            <br><hr>
+            <div id="DataAndComment" style="padding-left: 10px; font-size: 25px; line-height: 40px;">
                 <label for="Name">Name:</label>
-                <output type="text" id="Name" name="Name" style="height: 30px;"><br>
+                <output type="text" id="Name" name="Name" style="height: 30px;"></output><br>
                 <label for="description">Beschreibung:</label> <br>
-                <output type="text" id="description" name="description" style="height: 30px;"><br>
+                <output type="text" id="description" name="description" style="height: 30px;"></output><br>
                 <label for="Comment">Rezension:</label><br>
-                <textarea name="Comment" id="Comment" cols="50" rows="4" placeholder="Rezension" style="resize: none;" maxlength="150"></textarea>
+                <textarea id="myTextarea" name="Comment"  cols="45" rows="5" placeholder="Rezension" style="resize: none;" maxlength="150"></textarea>
                 <button type="button" name="commenting" id="commenting">Rezension hinzufügen</button><br>
                 <label for="Rezensionen">Rezensionen: </label><br>
-                <div id="Rezensionen" name="Rezensionen" style="overflow: auto; height: 200px; font-size: 20px;">
-                    Rezensionen anzeigen lassen
+                <div id="rezensionen" name="Rezensionen" style="overflow: auto; height: 200px; font-size: 20px;">
                 </div>
             </div>
         </div>
-
         <div id='map'></div>
 
     </div>
 </div>
 <script>
 
-    var geojson = {
-        type: 'FeatureCollection',
-        features: [
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-77.03238901390978,38.913188059745586]
-                },
-                "properties": {
-                    "title": "Mapbox DC",
-                    "description": "1714 14th St NW, Washington DC",
-                    "marker-color": "#fc4353",
-                    "marker-size": "large",
-                    "marker-symbol": "monument"
-                }
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-122.414, 37.776]
-                },
-                "properties": {
-                    "title": "Mapbox SF",
-                    "description": "155 9th St, San Francisco",
-                    "marker-color": "#fc4353",
-                    "marker-size": "large",
-                    "marker-symbol": "harbor"
-                }
-            }
-        ]
-    };
+    var currentLat;
+    var currentLong;
+    var currentName;
 
 
 
-    L.mapbox.accessToken = 'pk.eyJ1Ijoib3JvcmFzdHVkIiwiYSI6ImNsbWFjYWdudTBhenYzZnB4MWRxOTQyZmgifQ.xGK5egvW3iqFN6F9zNDjFg';
+    var geojson = {{.geo}}
+        L.mapbox.accessToken = 'pk.eyJ1Ijoib3JvcmFzdHVkIiwiYSI6ImNsbWFjYWdudTBhenYzZnB4MWRxOTQyZmgifQ.xGK5egvW3iqFN6F9zNDjFg';
     var map = L.mapbox.map('map')
         .setView([ 52.516514825737175, 13.380956275053023], 7)
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'))
-        .featureLayer.setGeoJSON(geojson);
-/*
-    L.marker([37.9, -77], {
-        icon: L.mapbox.marker.icon({
-            'marker-size': 'large',
-            'marker-symbol': 'toilet',
-            'marker-color': '#fa0'
+
+    var myFeatureLayer = L.mapbox.featureLayer(geojson)
+        .addTo(map);
+
+    myFeatureLayer.eachLayer(function (marker) {
+        marker.on('click', function () {
+            var emptyPopup = L.popup().setContent('');
+            marker.bindPopup(emptyPopup).openPopup();
+            handleMarkerClick(marker);
+            return false
         })
-    }).addTo(map);
-*/
 
-    var url = URL.createObjectURL()
+    })
 
-    var featureLayer = L.mapbox.featureLayer().loadURL('https://docs.mapbox.com/mapbox.js/assets/data/example-single.geojson') //must serve an url to a json file. That's because of chromes security
-        .addTo('map');
+    function handleMarkerClick(marker) {
 
+        while( document.getElementById('rezensionen').firstChild){
+            document.getElementById('rezensionen').removeChild( document.getElementById('rezensionen').firstChild)
+        }
 
-    var filter = document.getElementById('button');
+        document.getElementById('DataAndComment').style.visibility = 'visible';
 
+        currentLong = marker.feature.geometry.coordinates[0];
+        currentLat = marker.feature.geometry.coordinates[1];
 
-    /*
-    filter.onclick = function (e) {
-        featureLayer.setFilter(function(f){
-            return f.properties['marker-symbol'] === 'toilet';
+        let selectedMarker = marker.feature.properties;
+
+        currentName = selectedMarker.name;
+        document.getElementById('Name').textContent = selectedMarker.name;
+        document.getElementById('description').textContent = selectedMarker.description;
+
+        var recension = selectedMarker.recension;
+
+        recension.forEach(function (item) {
+            var listing = document.createElement('output');
+            listing.type = 'text';
+            listing.setAttribute('readonly', true);
+            listing.value = item;
+            listing.classList.add('listing');
+            document.getElementById('rezensionen').appendChild(listing);
         });
-        return false;
-    };
-    */
+
+
+
+    }
+
+    document.getElementById('button').addEventListener('click', () => {
+
+
+        const male = document.getElementById("Male").checked;
+        const female = document.getElementById("Female").checked;
+        const flinta = document.getElementById("FLINTA").checked;
+
+        var filter = function (features) {
+            return true;
+        }
+
+        if (male) {
+            if (female) {
+                if (flinta) {
+                    filter = function (features) {
+                        return true;
+                    }
+                } else {
+                    // male and female are true, flinta is false
+                    filter = function (features) {
+                        return !features.properties.type.includes('FLINTA');
+                    }
+                }
+            } else {
+                if (flinta) {
+                    // male and flinta are true, female is false
+                    filter = function (features) {
+                        return !features.properties.type.includes('Female');
+                    }
+                } else {
+                    // male is true, female and flinta are false
+                    filter = function (features) {
+                        return features.properties.type.includes('Male');
+                    }
+                }
+            }
+        } else {
+            if (female) {
+                if (flinta) {
+                    // female and flinta are true, male is false
+                    filter = function (features) {
+                        return !features.properties.type.includes('Male');
+                    }
+
+                } else {
+                    // female is true, male and flinta are false
+                    filter = function (features) {
+                        return features.properties.type.includes('Female');
+                    }
+                }
+            } else {
+                if (flinta) {
+                    // flinta is true, male and female are false
+                    filter = function (features) {
+                        return features.properties.type.includes('FLINTA');
+                    }
+                } else {
+                    filter = function (features) {
+                        return true;
+                    }
+                }
+            }
+
+        }
+        myFeatureLayer.setFilter(filter)
+    })
+
+    document.getElementById('commenting').addEventListener('click', ()=> {
+
+        var comment = document.getElementById("myTextarea").value
+
+        if(comment.trim() === "") {
+            alert("Bitte gib etwas in das Rezensionen-Feld ein");
+            return
+        }
+
+        fetch("/comment-endpoint", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                lat: currentLat,
+                long: currentLong,
+                name: currentName,
+                comment: document.getElementById("myTextarea").value
+            })
+        }).then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+            .then((data) => {
+                console.log("Response data:", data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    })
+
 </script>
 
 </body>

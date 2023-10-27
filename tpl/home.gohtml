@@ -110,6 +110,17 @@
             margin-bottom: 10px;
             background-color: white;
         }
+        #pos {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
     </style>
 </head>
@@ -135,12 +146,15 @@
                 <input type="checkbox" name="Male" title="Male" value="Male" id="Male">
                 <label for="Male">Male</label><br>
                 <input type="checkbox" name="Female" title="Female" value="Female" id="Female">
-                <label for="Female">Female</label><br>
+                <label for="Female">Female &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><button type="button" name="button" id="button">Filter</button><br>
                 <input type="checkbox" name="FLINTA" title="FLINTA" value="FLINTA" id="FLINTA">
                 <label for="FLINTA">FLINTA</label><br>
-                <button type="button" name="button" id="button">Filter</button>
-
             </form>
+            <br><hr>
+            <div style="padding-left: 10px; font-size: 22px; line-height: 40px;">
+                <label for="eigenerStandort">Gehe zur eigenen Position</label><br>
+                <input type="text" name="eigenerStandort" id="eigenerStandort" placeholder="eigener Standort">&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" name="pos" id="pos">Position</button>
+            </div>
             <br><hr>
             <div id="DataAndComment" style="padding-left: 10px; font-size: 25px; line-height: 40px;">
                 <label for="Name">Name:</label>
