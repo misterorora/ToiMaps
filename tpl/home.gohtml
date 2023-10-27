@@ -180,12 +180,14 @@
     var currentLong;
     var currentName;
 
+    var marker;
+
 
 
     var geojson = {{.geo}}
         L.mapbox.accessToken = 'pk.eyJ1Ijoib3JvcmFzdHVkIiwiYSI6ImNsbWFjYWdudTBhenYzZnB4MWRxOTQyZmgifQ.xGK5egvW3iqFN6F9zNDjFg';
     var map = L.mapbox.map('map')
-        .setView([ 52.516514825737175, 13.380956275053023], 7)
+        .setView([52.516514825737175, 13.380956275053023], 7)
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'))
 
     var myFeatureLayer = L.mapbox.featureLayer(geojson)
@@ -202,18 +204,14 @@
     })
 
     function handleMarkerClick(marker) {
-
         while( document.getElementById('rezensionen').firstChild){
             document.getElementById('rezensionen').removeChild( document.getElementById('rezensionen').firstChild)
         }
 
         document.getElementById('DataAndComment').style.visibility = 'visible';
-
         currentLong = marker.feature.geometry.coordinates[0];
         currentLat = marker.feature.geometry.coordinates[1];
-
         let selectedMarker = marker.feature.properties;
-
         currentName = selectedMarker.name;
         document.getElementById('Name').textContent = selectedMarker.name;
         document.getElementById('description').textContent = selectedMarker.description;
@@ -228,10 +226,55 @@
             listing.classList.add('listing');
             document.getElementById('rezensionen').appendChild(listing);
         });
-
-
-
     }
+
+
+
+
+    async function getCoordinates(address) {
+
+        const token = 'pk.eyJ1Ijoic3RlaW5icmluZyIsImEiOiJja2t1YjE3ZXEwZ3R0MnBqdWo2cHRkOW5sIn0.OEPMk0xJ6j2zIq1zZN9yMg';
+        const baseURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
+        const encodedAddress = encodeURIComponent(address);
+        const midTerm = ".json?access_token="
+
+        const url = baseURL + encodedAddress + midTerm + token;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.features.length > 0) {
+                const location = data.features[0].center;
+                return {
+                    latitude: location[1],
+                    longitude: location[0]
+                };
+            } else {
+                throw new Error("Unable to geocode address: " + address);
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    document.getElementById('pos').addEventListener('click', () => {
+        const address = document.getElementById('eigenerStandort').value;
+
+        if (marker) {
+            map.removeLayer(marker);
+        }
+
+        getCoordinates(address)
+            .then(coordinates => {
+                map.setView([coordinates.latitude, coordinates.longitude], 15);
+                marker = L.marker([coordinates.latitude, coordinates.longitude], {"marker-color": "#0020fd"}).addTo(map);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    })
+
 
     document.getElementById('button').addEventListener('click', () => {
 
