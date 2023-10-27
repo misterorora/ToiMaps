@@ -117,9 +117,6 @@
                     <label for="FLINTA">FLINTA</label><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button id="getCoordinatesButton">Neue Toilette</button>
-
-                    <p>Latitude: <span id="latitudeSpan"></span></p>
-                    <p>Longitude: <span id="longitudeSpan"></span></p>
                 </td>
             </tr>
         </table>
@@ -133,8 +130,6 @@
         const address = document.getElementById('addressInput').value;
         getCoordinates(address)
             .then(coordinates => {
-                document.getElementById('latitudeSpan').textContent = coordinates.latitude;
-                document.getElementById('longitudeSpan').textContent = coordinates.longitude;
 
                 fetch("/backend-endpoint", {
                     method: "POST",
