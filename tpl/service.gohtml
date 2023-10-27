@@ -195,15 +195,25 @@
     }
 
     function getType() {
+
+        let arr = []
+
         if(document.getElementById("Male").checked){
-            return "Male";
-        }else if(document.getElementById("Female").checked){
-            return "Female";
-        }else if(document.getElementById("FLINTA").checked){
-            return "FLINTA";
-        }else {
-            return "FLINTA";
+            arr.push("Male")
         }
+        if(document.getElementById("Female").checked){
+            arr.push("Female")
+        }
+        if(document.getElementById("FLINTA").checked){
+            arr.push("FLINTA")
+        }
+
+        if(arr.length <1){
+            arr.push("Male")
+            arr.push("Female")
+        }
+
+        return arr;
     }
 
 </script>

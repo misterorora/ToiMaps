@@ -239,19 +239,19 @@
                 } else {
                     // male and female are true, flinta is false
                     filter = function (features) {
-                        return features.properties.type !== 'FLINTA';
+                        return !features.properties.type.includes('FLINTA');
                     }
                 }
             } else {
                 if (flinta) {
                     // male and flinta are true, female is false
                     filter = function (features) {
-                        return features.properties.type !== 'Female';
+                        return !features.properties.type.includes('Female');
                     }
                 } else {
                     // male is true, female and flinta are false
                     filter = function (features) {
-                        return features.properties.type === 'Male';
+                        return features.properties.type.includes('Male');
                     }
                 }
             }
@@ -260,23 +260,22 @@
                 if (flinta) {
                     // female and flinta are true, male is false
                     filter = function (features) {
-                        return features.properties.type !== 'Male';
+                        return !features.properties.type.includes('Male');
                     }
 
                 } else {
                     // female is true, male and flinta are false
                     filter = function (features) {
-                        return features.properties.type === 'Female';
+                        return features.properties.type.includes('Female');
                     }
                 }
             } else {
                 if (flinta) {
                     // flinta is true, male and female are false
                     filter = function (features) {
-                        return features.properties.type === 'FLINTA';
+                        return features.properties.type.includes('FLINTA');
                     }
                 } else {
-
                     filter = function (features) {
                         return true;
                     }

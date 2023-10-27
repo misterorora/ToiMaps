@@ -22,7 +22,7 @@ type Properties struct {
 	MarkerSymbol string   `json:"marker-symbol"`
 	Name         string   `json:"name"`
 	Description  string   `json:"description"`
-	Type         string   `json:"type"`
+	Type         []string `json:"type"` //gender
 	Recension    []string `json:"recension"`
 }
 
