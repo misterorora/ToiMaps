@@ -69,11 +69,11 @@ func (h *Handler) getService(ctx *gin.Context) {
 }
 func (h *Handler) handleFrontendData(ctx *gin.Context) {
 	var requestData struct {
-		Lat         float64 `json:"lat"`
-		Long        float64 `json:"long"`
-		Name        string  `json:"name"`
-		Type        string  `json:"type"`
-		Description string  `json:"description"`
+		Lat         float64  `json:"lat"`
+		Long        float64  `json:"long"`
+		Name        string   `json:"name"`
+		Type        []string `json:"type"`
+		Description string   `json:"description"`
 	}
 	if err := ctx.ShouldBindJSON(&requestData); err != nil {
 		// Handle error, possibly return an error response
@@ -113,4 +113,5 @@ func (h *Handler) handleComment(ctx *gin.Context) {
 
 	addComment(comment)
 	ctx.JSON(http.StatusOK, gin.H{"message": "Data received successfully"})
+	ctx.Writer.WriteString("<script>window.location.reload();</script>")
 }
