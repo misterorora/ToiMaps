@@ -341,6 +341,18 @@
 
         }
         myFeatureLayer.setFilter(filter)
+
+        myFeatureLayer.eachLayer(function (marker) {
+            marker.on('click', function () {
+                var emptyPopup = L.popup().setContent('');
+                marker.bindPopup(emptyPopup).openPopup();
+                handleMarkerClick(marker);
+                return false
+            })
+
+        })
+
+
     })
 
     document.getElementById('commenting').addEventListener('click', ()=> {
