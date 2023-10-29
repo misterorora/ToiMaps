@@ -8,107 +8,90 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; bottom:0; left: 25%; width: 75%; height: 90%;}
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             max-width: 100%;
         }
-        #header {
-            display: inline;
-            align-content: center;
-            position: absolute;
-            justify-content: end;
-            align-items: center;
+
+        #canva {
             width: 100%;
-            height: 10%;
-            background-color: #693b54;
-            opacity: 0.75;
-        }
-
-        .nav {
-            display: inline-flex;
-            align-content: flex-end;
-            justify-content: flex-end;
-            gap: 50px;
-            margin-top: 8px;
-            margin-right: 5%;
-            list-style-type: none;
-            top: 5%;
-            padding-top: 1%;
-        }
-
-        .nav2 {
-            display: inline;
-            align-content: flex-start;
-            justify-content: flex-start;
-            gap: 50px;
-            margin-top: 8px;
-            margin-right: 5%;
-            list-style-type: none;
-            top: 5%;
-            padding-top: 1%;
-            padding-left: 10px;
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+            box-sizing: border-box;
+            position: relative; /* Add position: relative to establish a positioning context for the #header and #under */
         }
 
 
-        .nav li a {
-            text-decoration: none;
-            font-family: 'Classico', sans-serif;
-            color: mintcream;
-            font-size: 1.8rem;
-        }
         #under {
-            display: inline;
+            display: flex;
             position: absolute;
             top: 10%;
             width: 100%;
+            padding: 0;
             height: 90%;
-            padding-left: 10px;
             background-image: url(../visual/background.jpg);
-            background-repeat: no-repeat;
-            background-attachment: fixed;  
-            background-size: 100% 100%;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
         }
-        #ausrichtung {
-            padding-left: 5px;
-            padding-top: 5px;
+        .centered-frame {
+            width: 40%;
+            max-width: 40%; /* Optional: set a maximum width */
+            height: 100%;
+            background-color: #CCC1AF;
+            overflow: auto; /* Enable scrolling when content overflows */
+            box-sizing: border-box;
+            align-self: center;
+            padding: 20px; /* Optional: add padding for content inside the frame */
+            font-family:system-ui;
+        }
+        p {
+            margin-bottom: 20px; /* Adjust the value as needed */
         }
 
 
     </style>
     </head>
     <body>
-        <div>
-            <div id="header">
-                <img src="/visual/Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
-                <h1 class="nav2">ToiMaps</h1>
-                <ul class="nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/service">Services</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
+
+    <div id='canva'>
+            {{template "_header.gohtml" .}}
             <div id = "under">
-                <table style="margin-top: 2%;">
-                    <tr>
-                        <td style="width: 10%;"></td>
-                        <td style="background-color: azure; width: 80%;" id="ausrichtung">
-                            <h2>About ToiMaps&nbsp;</h2>
-                            <p>
-                                <span style="line-height: 2.0;">ToiMaps ist eine Austauschplattform für alle, die die nächstgelegene Toilette suchen. Sie bietet Funktionen wie Toilette hinzufügen, bewerten und filtern nach der nächst gelegen Toilette für das eigene Geschlecht oder entsprechend der eigenen Bedürfnisse. ToiMaps ist auch genderfreundlich, indem speziell auch nach Toiletten für FLINTA gesucht werden kann.&nbsp;</span>
-                            </p>
-                            <h2>About Us</h2>
-                            <p>
-                                <span style="line-height: 2.0;">Wir sind ein kleines Entwicklerteam bestehend aus fünf Studenten der HWR-Berlin. ToiMaps ist im Zuge eines Studienprojektes entstanden, bei dem wir den Themenbereich Softwareengineering näher kennenlernen sollten. Die Idee für ToiMaps ist aus Besuchen von Festivals entstanden, bei denen die Toilettenbeschreibungen und -zuteilungen sehr gut gehandhabt wurde. Daher wollten wir unseren Mitmenschen eine Plattform bieten, mit der sie sich gegenseitig helfen können, die nächstgelegene Toilette zu finden.</span>
-                            </p>
-                        </td>
-                        <td></td>
-                    </tr>
-                </table>
+                <div class="centered-frame">
+                <p><h2><strong>About Beschreibung</strong></h2></p>
+
+                <p>
+                    ToiMaps ist die Anwendung für dich, wenn du ein stilles Örtchen brauchst. Mal für kleine Jungs oder Mädchen
+                    musst oder aber auch einfach eine Toilette suchst. Finde schnell und einfach diese,
+                    die zu deinen Bedürfnissen passt. Egal ob du eine Standardtoilette, ein Pissoir oder sogar ein Missior brauchst.
+                    Hier wirst du es finden!
+                    Du bist dir außerdem nicht sicher, wie sauber deine Toilette ist? Ob du für die Nutzung Geld bezahlen musst?
+                    Oder ob die Toilette nur zu gewissen Zeiten zugänglich sind? Dann lies dir die Bewertung aus der Community durch!
+                </p>
+                <p>
+                    Lasse auch gerne die Community an deinen Erfahrungen teilhaben mit deiner eigenen Rezension.
+                    Hattest du ein besonderes Erlebnis? Hast du Menstruationsartikel gefunden?
+                    Auch andere könnte das Interessieren. Probiere es gleich mal aus, denn nur du kannst dieser Plattform leben geben!
+                </p>
+
+
+                <p><h2><strong>About Us</strong></h2></p>
+                <p>
+                    Das Projektteam, bestehend aus fünf Studierenden der Hochschule für Wirtschaft und Recht Berlin,
+                    hat sich das Ziel gesetzt, eine Applikation zu entwickeln, die es Menschen, unabhängig von ihrem Geschlecht ermöglicht, mühelos und schnell eine
+                    geeignete Toilette zu finden. Nach dem Ziel der Gesellschaft einen Mehrwert zu bringen, hat Toleranz und Akzeptanz einen sehr hohen Stellenwert.
+                    Alle Menschen sollen mit einbezogen werden, unabhängig von Geschlecht, Herkunft, Aussehen und Identität.
+                    Jede Person sollte den Zugang zu einer sauberen Toilette haben und diese schnellstmöglich finden.</p>
+
+
+
+                </div>
             </div> 
-        </div>   
+        </div>
     </body>
 </html>

@@ -15,111 +15,115 @@
         box-sizing: border-box;
         max-width: 100%;
     }
-    #header {
-        display: inline;
-        align-content: center;
-        position: absolute;
-        justify-content: end;
-        align-items: center;
+
+    #canva {
         width: 100%;
-        height: 10%;
-        background-color: #693b54;
-        opacity: 0.75;
+        height: 100vh;
+        background-color: #f0f0f0;
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+        box-sizing: border-box;
+        position: relative; /* Add position: relative to establish a positioning context for the #header and #under */
     }
 
-    .nav {
-        display: inline-flex;
-        align-content: flex-end;
-        justify-content: flex-end;
-        gap: 50px;
-        margin-top: 8px;
-        margin-right: 5%;
-        list-style-type: none;
-        top: 5%;
-        padding-top: 1%;
-    }
-
-    .nav2 {
-        display: inline;
-        align-content: flex-start;
-        justify-content: flex-start;
-        gap: 50px;
-        margin-top: 8px;
-        margin-right: 5%;
-        list-style-type: none;
-        top: 5%;
-        padding-top: 1%;
-        padding-left: 10px;
-    }
-
-
-    .nav li a {
-        text-decoration: none;
-        font-family: 'Classico', sans-serif;
-        color: mintcream;
-        font-size: 1.8rem;
-    }
     #under {
-        display: inline;
+        display: flex;
         position: absolute;
         top: 10%;
         width: 100%;
+        padding: 0;
         height: 90%;
-        padding-left: 10px;
         background-image: url(../visual/background.jpg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        overflow: hidden;
     }
-    #ausrichtung {
-        padding-left: 5px;
-        padding-top: 5px;
+    .centered-frame {
+        width: 40%;
+        max-width: 40%; /* Optional: set a maximum width */
+        height: 100%;
+        background-color: #CCC1AF;
+        overflow: auto; /* Enable scrolling when content overflows */
+        box-sizing: border-box;
+        align-self: center;
+        padding: 20px; /* Optional: add padding for content inside the frame */
+        font-family:system-ui;
     }
+    p {
+        margin-bottom: 20px; /* Adjust the value as needed */
+    }
+    #filter{
+        margin-left: 22%;
+        padding-top: 15px;
+    }
+    #getCoordinatesButton {
+        background-color: #5aa09a; /* Green */
+        border: none;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 9px;
+        margin-left: 20%;
+        margin-top: 15px;
+    }
+    #input{
+        margin-left: 25%;
+        margin-top: 5%;
+    }
+
 
 
 </style>
 
 <body>
-<div>
-    <div id="header">
-        <img src="/visual/Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
-        <h1 class="nav2">ToiMaps</h1>
-        <ul class="nav">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/service">Services</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </div>
+<div id='canva'>
+    {{template "_header.gohtml" .}}
     <div id = "under">
-        <table style="margin-top: 2%;">
-            <tr>
-                <td style="width: 10%;"></td>
-                <td style="background-color: azure; width: 80%;" id="ausrichtung">
-                    <h2>Services ToiMaps&nbsp;</h2>
-                    <h3>Neue Toilette</h3>
-                    <p>
-                        <span style="line-height: 2.0;">Wenn Sie eine Toilette gefunden haben, die noch nicht auf der Plattform ist können Sie sie hier einfügen lassen.</span>
-                    </p>
-                    <label for="Toilettenname">Toilettenname: &nbsp;&nbsp;</label>
-                    <input type="text" name="Toilettenname" id="Toilettenname" maxlength="50"><br><br>
-                    <label for="Description">Beschreibung:</label><br>
-                    <textarea name="Description" id="Description" cols="50" rows="4" placeholder="Beschreibung" style="resize: none;" maxlength="150"></textarea>
-                    <br>
-                    <br>
-                    <label for="addressInput">Adresse: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input id="addressInput" placeholder="Adresse eingeben"><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="Male" title="Male" value="Male" id="Male">
-                    <label for="Male">Male</label><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="Female" title="Female" value="Female" id="Female">
-                    <label for="Female">Female</label><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="FLINTA" title="FLINTA" value="FLINTA" id="FLINTA">
-                    <label for="FLINTA">FLINTA</label><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button id="getCoordinatesButton">Neue Toilette</button>
-                </td>
-            </tr>
-        </table>
+        <div class="centered-frame">
+            <p><h2>Services ToiMaps&nbsp;</h2></p>
+
+            <p><h3>Neue Toilette</h3></p>
+            <p>
+                <span style="line-height: 2.0;">
+                    <p>Haben Sie eine Toilette gefunden, die aber noch nicht angebildet wird? Kein Problem. Fügen Sie die Toilette einfach selbst hinzu.</p>
+                    <p>Hierzu tragen Sie im Feld Toilettenname einfach den gewünschten Namen ein. (Tipp: Nutzen Sie einen Namen, der auch zum Ort passt. Bsp: "Brandenburgen Tor" für eine Toilette am Brandenburger Tor)</p>
+
+                    <p>Danach können Sie noch eine kurze Beschreibung hinzufügen. Dabei können Sie auf Kosten eingehen, den Reinheitsgrad bewerten oder einfach Eindrücke schildern, die Sie bei ihrem letzten Besuch vernommen haben</p>
+
+                    <p>Bevor Sie die Toilette nun hinzufügen, geben Sie bitte noch die Adresse ein und wählen Sie aus, welche Toiletten vor Ort zur Verfügung stehen.
+
+                </span>
+            </p>
+            <div id="input">
+            <label for="Toilettenname"><strong>Toilettenname: &nbsp;&nbsp;</strong></label>
+            <input type="text" name="Toilettenname" id="Toilettenname" maxlength="50"><br><br>
+            <label for="Description"> <strong>Beschreibung:</strong></label><br><br>
+            <textarea name="Description" id="Description" cols="50" rows="4" placeholder="Beschreibung" style="resize: none;" maxlength="150"></textarea>
+            <br>
+            <br>
+            <label for="addressInput"><strong>Adresse: </strong></label>
+            <input id="addressInput" placeholder="Straße Nr, Ort, PLZ" style="margin-left: 10%"><br>
+
+            <div id="filter" style="font-size: 20px">
+                <input type="checkbox" name="Male" title="Male" value="Male" id="Male">
+                <label for="Male">Pissoir</label><br>
+                <input type="checkbox" name="Female" title="Female" value="Female" id="Female">
+                <label for="Female">Toilette</label><br>
+                <input type="checkbox" name="FLINTA" title="FLINTA" value="FLINTA" id="FLINTA">
+                <label for="FLINTA">Missoir</label><br>
+            </div>
+
+            <button id="getCoordinatesButton">Neue Toilette</button>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
 
@@ -128,6 +132,18 @@
 
     document.getElementById('getCoordinatesButton').addEventListener('click', () => {
         const address = document.getElementById('addressInput').value;
+
+        if (document.getElementById('Toilettenname').value.trim() === ""){
+            alert("Bitte gib einen gültigen Namen ein")
+            return;
+        }
+        if(address === ""){
+            alert("Bitte gib eine gültige Adresse ein")
+            return;
+        }
+
+
+
         getCoordinates(address)
             .then(coordinates => {
 
@@ -204,7 +220,6 @@
         }
 
         if(arr.length <1){
-            arr.push("Male")
             arr.push("Female")
         }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset=utf-8 />
     <title>Home Toimaps</title>
@@ -8,98 +9,64 @@
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; bottom:0; left: 25%; width: 75%; height: 90%;}
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            max-width: 100%;
-        }
-        #header {
-            display: inline;
-            align-content: center;
-            position: absolute;
-            justify-content: end;
-            align-items: center;
+
+        #canva {
             width: 100%;
-            height: 10%;
-            background-color: #693b54;
-            opacity: 0.75;
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+            box-sizing: border-box;
+            position: relative; /* Add position: relative to establish a positioning context for the #header and #under */
         }
 
-        .nav {
-            display: inline-flex;
-            align-content: flex-end;
-            justify-content: flex-end;
-            gap: 50px;
-            margin-top: 8px;
-            margin-right: 5%;
-            list-style-type: none;
-            top: 5%;
-            padding-top: 1%;
-        }
-
-        .nav2 {
-            display: inline;
-            align-content: flex-start;
-            justify-content: flex-start;
-            gap: 50px;
-            margin-top: 8px;
-            margin-right: 5%;
-            list-style-type: none;
-            top: 5%;
-            padding-top: 1%;
-            padding-left: 10px;
-        }
-
-
-        .nav li a {
-            text-decoration: none;
-            font-family: 'Classico', sans-serif;
-            color: mintcream;
-            font-size: 1.8rem;
-        }
         #under {
             display: flex;
             width: 100%;
-            height: 100%;
+            height: 90%;
+            flex-direction: row;
+            overflow: hidden; /* Add this line to hide overflowing content */
         }
         #leftPart {
-            display: block;
-            left: 0px;
-            position: absolute;
-            align-content: center;
-            top: 10%;
-            width: 25%;
-            height: 90%;
-            background-color: rgb(255, 255, 255);
+            align-self: flex-start;
+            width: 20%;
+            background-color: #CCC1AF;
+            height: 100%;
         }
+
+        #map {
+            flex: 1;
+            width: 80%; /* Set the width to 75% of the available space in #under */
+            left: 0; /* Reset the left position to 0 */
+        }
+
         #button {
-            background-color: #4CAF50; /* Green */
+            background-color: #5aa09a; /* Green */
             border: none;
-            color: white;
+            color: black;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             cursor: pointer;
+            border-radius: 9px;
         }
         #commenting {
-            background-color: #4CAF50; /* Green */
+            background-color: #80a05a; /* Green */
             border: none;
-            color: white;
+            color: black;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 9px;
         }
-        #DataAndComment {
-            background-color: #adadad;
-            visibility: hidden;
-        }
+
         .listing {
             border: 2px solid white;
             display: flex;
@@ -108,87 +75,134 @@
             box-sizing: border-box;
             margin-top: 10px;
             margin-bottom: 10px;
-            background-color: white;
+            background-color: grey;
         }
         #pos {
-            background-color: #4CAF50; /* Green */
+            background-color: #80a05a; /* Green */
+            color: black;
             border: none;
-            color: white;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             cursor: pointer;
-        }
-        #toilette {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
+            border-radius: 9px;
 
         }
+        #toilette {
+            background-color: #80a05a; /* Green */
+            border: none;
+            color: black;
+            padding: 12px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 9px;
+
+        }
+        #filter{
+            font-family: 'Courier New', monospace;
+            padding-left: 10px;
+            font-size: 25px;
+            line-height: 25px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        #jumpPosition{
+            padding-left: 14px;
+            font-size: 20px;
+            line-height: 35px;
+        }
+        #DataAndComment{
+            padding-left: 10px;
+            visibility: hidden;
+            font-size: 20px;
+            line-height: 25px;
+            font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;
+        }
+        #lowerLayer {
+            padding-left: 14px;
+            font-size: 20px;
+            line-height: 35px;
+            margin-top: 20px;
+        }
+        #rezensionen{
+            overflow: auto;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+
 
     </style>
 </head>
 
 <body>
 
+
+
 <div id='canva'>
-    <div id="header">
-        <img src="/visual/Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
-        <h1 class="nav2">ToiMaps</h1>
-        <ul class="nav">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/service">Services</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </div>
-
-
+    {{template "_header.gohtml" .}}
     <div id='under'>
         <div id='leftPart'>
-            <form style="padding-left: 10px; font-size: 25px; line-height: 40px;">
+
+            <div id ='filter'>
                 <input type="checkbox" name="Male" title="Male" value="Male" id="Male">
-                <label for="Male">Male</label><br>
+                <label for="Male">Pissoir</label><br>
                 <input type="checkbox" name="Female" title="Female" value="Female" id="Female">
-                <label for="Female">Female &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><button type="button" name="button" id="button">Filter</button><br>
+                <label for="Female">Toilette</label>  &nbsp; &nbsp;<button type="button" name="button" id="button">Filter</button><br>
                 <input type="checkbox" name="FLINTA" title="FLINTA" value="FLINTA" id="FLINTA">
-                <label for="FLINTA">FLINTA</label><br>
-            </form>
-            <br><hr>
-            <div style="padding-left: 10px; font-size: 22px; line-height: 40px;">
+                <label for="FLINTA">Missoir</label><br>
+            </div>
+            <hr>
+            <div id = 'jumpPosition' >
                 <label for="eigenerStandort">Gehe zur eigenen Position</label><br>
-                <input type="text" name="eigenerStandort" id="eigenerStandort" placeholder="eigener Standort">&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" name="pos" id="pos">Position</button>
+                <input type="text" name="eigenerStandort" id="eigenerStandort" placeholder="Eigener Standort">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" name="pos" id="pos">Position</button>
             </div>
             <br><hr>
-            <div id="DataAndComment" style="padding-left: 10px; font-size: 25px; line-height: 40px;">
+            <div id="lowerLayer">
+                <label for="newToi">Fehlt eine Toilette?</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/service"><button type="button" id="toilette" name="toilette">Neue Toilette</button></a>
+            </div>
+            <br><hr>
+            <div id="DataAndComment">
                 <label for="Name">Name:</label>
                 <output type="text" id="Name" name="Name" style="height: 30px;"></output><br>
                 <label for="description">Beschreibung:</label> <br>
                 <output type="text" id="description" name="description" style="height: 30px;"></output><br>
                 <label for="Comment">Rezension:</label><br>
-                <textarea id="myTextarea" name="Comment"  cols="45" rows="5" placeholder="Rezension" style="resize: none;" maxlength="150"></textarea>
+                <textarea id="myTextarea" name="Comment"  cols="45" rows="5" placeholder="Rezension (max. 150)" style="resize: none;" maxlength="150"></textarea>
                 <button type="button" name="commenting" id="commenting">Rezension hinzufügen</button><br>
                 <label for="Rezensionen">Rezensionen: </label><br>
-                <div id="rezensionen" name="Rezensionen" style="overflow: auto; height: 200px; font-size: 20px;">
+                <div id="rezensionen" name="Rezensionen">
                 </div>
             </div>
-            <div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/service"><button type="button" id="toilette" name="toilette">Neue Toilette</button></a>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
         </div>
 
-        <div id='map'></div>
 
+        <div id='map'>
+
+        </div>
     </div>
 </div>
+
+
 <script>
 
     var currentLat;
@@ -230,6 +244,7 @@
         currentName = selectedMarker.name;
         document.getElementById('Name').textContent = selectedMarker.name;
         document.getElementById('description').textContent = selectedMarker.description;
+        document.getElementById("myTextarea").value = '';
 
         var recension = selectedMarker.recension;
 
