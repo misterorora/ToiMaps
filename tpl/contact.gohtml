@@ -15,95 +15,138 @@
             box-sizing: border-box;
             max-width: 100%;
         }
-        #header {
-            display: inline;
-            align-content: center;
-            position: absolute;
-            justify-content: end;
-            align-items: center;
+
+        #canva {
             width: 100%;
-            height: 10%;
-            background-color: #693b54;
-            opacity: 0.75;
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+            box-sizing: border-box;
+            position: relative; /* Add position: relative to establish a positioning context for the #header and #under */
         }
 
-        .nav {
-            display: inline-flex;
-            align-content: flex-end;
-            justify-content: flex-end;
-            gap: 50px;
-            margin-top: 8px;
-            margin-right: 5%;
-            list-style-type: none;
-            top: 5%;
-            padding-top: 1%;
-        }
-
-        .nav2 {
-            display: inline;
-            align-content: flex-start;
-            justify-content: flex-start;
-            gap: 50px;
-            margin-top: 8px;
-            margin-right: 5%;
-            list-style-type: none;
-            top: 5%;
-            padding-top: 1%;
-            padding-left: 10px;
-        }
-
-
-        .nav li a {
-            text-decoration: none;
-            font-family: 'Classico', sans-serif;
-            color: mintcream;
-            font-size: 1.8rem;
-        }
         #under {
-            display: inline;
+            display: flex;
             position: absolute;
             top: 10%;
             width: 100%;
+            padding: 0;
             height: 90%;
-            padding-left: 10px;
             background-image: url(../visual/background.jpg);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
         }
-        #ausrichtung {
-            padding-left: 5px;
-            padding-top: 5px;
+        .centered-frame {
+            width: 60%;
+            max-width: 60%; /* Optional: set a maximum width */
+            height: 100%;
+            background-color: #f0f0f0;
+            overflow: auto; /* Enable scrolling when content overflows */
+            box-sizing: border-box;
+            align-self: center;
+            padding: 20px; /* Optional: add padding for content inside the frame */
+            font-family:system-ui;
         }
+        p {
+            margin-bottom: 20px; /* Adjust the value as needed */
+        }
+        .custom-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .list-title {
+            margin-left: 0; /* No margin on the left for the title */
+        }
+        .pin-symbol {
+            margin-left: 20px; /* Adjust the margin to your preference */
+        }
+
+
+
+
 
 
     </style>
     </head>
     <body>
-        <div>
-            <div id="header">
-                <img src="/visual/Logo.png" alt="Logo" style="height: 50px; margin-left: 10px; margin-top: 1%;">
-                <h1 class="nav2">ToiMaps</h1>
-                <ul class="nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/service">Services</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
+    <div id='canva'>
+            {{template "_header.gohtml" .}}
             <div id = "under">
-                <table style="margin-top: 2%;">
-                    <tr>
-                        <td style="width: 10%;"></td>
-                        <td style="background-color: azure; width: 80%;" id="ausrichtung">
-                                <h2>Contact ToiMaps&nbsp;</h2>
-                                <p>
-                                    <span style="line-height: 2.0;">Für mehr Informationen eine E-Mail an <i>s_reetz22@stud.hwr-berlin.de</i> schreiben </span>
-                                </p>
-                        </td>
-                    </tr>
-                </table>
+                <div class="centered-frame">
+                    <p><h1><strong>Impressum</strong></h1></p>
+
+                    <p><h2><strong>Datenschutzerklärung</strong></h2></p>
+                    <p>Im Folgenden möchten wir Sie aufklären, wie Ihre Daten von uns verarbeitet werden.</p>
+
+                    <p><h2><strong>Verantwortlich im Sinne der DSGVO ist:</strong></h2><br>
+                        Benjamin Liebenberg<br>
+                        Zwergberg 32A, 16515 Oranienburg<br>
+                        s_liebenberg22@hwr-berlin.de</p>
+
+                    <p>Sollten Sie per E-Mail mit uns Kontakt aufnehmen, werden die mitgeteilten Daten von uns gespeichert, um Ihr Anliegen zu bearbeiten.</p>
+
+                    <p><h2><strong>Zu den verarbeiteten Daten zählen:</strong></h2><br>
+                        [Ihr Name]<br>
+                        [Ihre E-Mail-Adresse]</p>
+
+                    <p>Wir werden die Daten löschen, sobald die Speicherung nicht mehr erforderlich ist oder die Verarbeitung einschränken, falls gesetzliche Aufbewahrungspflichten bestehen.</p>
+
+                    <p><h2><strong>Betroffenenrechte</strong></h2></p>
+
+                    <p>Sie haben als betroffene Person, das Recht auf Auskunft, das Recht auf Berichtigung oder Löschung, das Recht auf Einschränkung der Verarbeitung und das Recht auf Widerspruch gegen die Verarbeitung Ihrer Daten.<br>
+                        Sofern Sie uns eine Einwilligung erteilt haben, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+
+                    <p>Bitte richten Sie Ihren Widerspruch oder Widerruf formlos an folgende Adresse:<br>
+                        Siehe den oben genannten Daten.</p>
+
+                    <p>Darüber hinaus haben Sie das Recht auf Datenübertragbarkeit. Sie haben weiter das Recht, sich bei einer Aufsichtsbehörde über die Verarbeitung zu beschweren. Eine Liste der entsprechenden Behörden finden Sie unter: <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html">https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</a>.
+                    </p>
+
+                    <p><h2><strong>Cookies</strong></h2></p>
+
+                    <p>Eine Speicherung von Cookies findet nicht statt.</p>
+
+                    <p><h2><strong>Hosting</strong></h2></p>
+
+                    <p>Sofern Sie sich als Besucher weder registrieren noch einloggen, erheben wir in sog. Logfiles folgende Daten, die Ihr Browser übermittelt:<br>
+                        IP-Adresse, Datum und Uhrzeit der Anfrage, Zeitzonendifferenz zur Greenwich Mean Time, Inhalt der Anforderung, HTTP-Statuscode, übertragene Datenmenge, Website, von der die Anforderung kommt und Informationen zu Browser und Betriebssystem.<br>
+                        Das ist erforderlich, um unsere Website anzuzeigen und die Stabilität und Sicherheit zu gewährleisten. Dies entspricht unserem berechtigten Interesse im Sinne des Art. 6 Abs. 1 S. 1 lit. f DSGVO.</p>
+
+                    <p>Wir setzen für die Zurverfügungstellung unserer Website folgenden Hoster ein.<br>
+                        STRATO AG - Otto-Ostrowski-Straße 7, 10249 Berlin</p>
+
+                    <p>Dieser ist Empfänger Ihrer personenbezogenen Daten und als Auftragsverarbeiter für uns tätig.<br>
+                        Dies entspricht unserem berechtigten Interesse im Sinne des Art. 6 Abs. 1 S. 1 lit. f DSGVO, selbst keinen Server in unseren Räumlichkeiten vorhalten zu müssen. Serverstandort ist Deutschland.</p>
+
+                    <p>Weitere Informationen zu Widerspruchs- und Beseitigungsmöglichkeiten gegenüber der STRATO AG finden Sie unter: <a href="https://www.strato.de/">strato.de</a></p>
+
+                    <p>Sie haben das Recht der Verarbeitung zu widersprechen. Ob der Widerspruch erfolgreich ist, ist im Rahmen einer Interessenabwägung zu ermitteln.</p>
+
+                    <p>Die Daten werden nach Ablauf von 14 Tagen gelöscht.</p>
+
+                    <p>Die Verarbeitung der unter diesem Abschnitt angegebenen Daten ist weder gesetzlich noch vertraglich vorgeschrieben. Die Funktionsfähigkeit der Website ist ohne die Verarbeitung nicht gewährleistet.</p>
+
+                    <ul class="custom-list">
+                        <li class="list-title"><strong>Weitere Zwecke der Datenverarbeitung</strong></li>
+                        <li><span class="pin-symbol">&#9679;</span> Gewährleistung der Stabilität und Sicherheit der Website</li>
+                        <li><span class="pin-symbol">&#9679;</span> Auswertung der Systemsicherheit und -Stabilität</li>
+                        <li><span class="pin-symbol">&#9679;</span> Optimierung der Website</li>
+                        <li><span class="pin-symbol">&#9679;</span> Überprüfung, ob rechtswidrige Nutzung stattgefunden hat</li>
+                    </ul>
+
+
+
+
+
+
+
+
+                </div>
             </div> 
-        </div>   
+        </div>
+
     </body>
 </html>
